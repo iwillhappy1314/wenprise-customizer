@@ -1,0 +1,54 @@
+{
+    "dependencies": {
+        "main.css": {
+            "files": [
+                "styles/main.scss"
+            ],
+            "main": true
+        },
+        "jquery.js": {
+            "bower": [
+                "jquery"
+            ]
+        },
+        "imagesloaded.js": {
+            "bower": [
+                "imagesloaded"
+            ]
+        },
+        "isotope.js": {
+            "bower": [
+                "isotope-layout"
+            ]
+        },
+        "jquery-ias.js": {
+            "bower": [
+                "jquery-ias"
+            ]
+        },
+        "slick-carousel.css": {
+            "bower": [
+                "slick-carousel"
+            ]
+        },
+        "slick-carousel.js": {
+            "bower": [
+                "slick-carousel"
+            ]
+        },
+        "magnific-popup.css": {
+            "bower": [
+                "magnific-popup"
+            ]
+        },
+        "magnific-popup.js": {
+            "bower": [
+                "magnific-popup"
+            ]
+        }
+    },
+    "paths": {
+        "source": "assets/",
+        "dist": "dist/"
+    }
+}

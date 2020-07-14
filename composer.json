@@ -1,0 +1,29 @@
+{
+  "name": "wenprise/assets",
+  "description": "Most used assets in WordPress theme development.",
+  "require": {
+    "ext-json": "*",
+    "proteusthemes/wp-customizer-utilities": "^2.7"
+  },
+  "autoload": {
+    "psr-4": {
+      "Wenprise\\WooCommerceBooster\\": "src/"
+    },
+    "files": [
+      "src/init.php"
+    ]
+  },
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Amos Lee",
+      "email": "iwillhappy1314@gmail.com"
+    }
+  ],
+  "minimum-stability": "stable",
+  "config": {
+    "preferred-install": {
+      "*": "dist"
+    }
+  }
+}

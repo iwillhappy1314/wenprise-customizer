@@ -1,6 +1,6 @@
 {
-  "name": "wenprise/assets",
-  "description": "Most used assets in WordPress theme development.",
+  "name": "wenprise/woocommerce-booster",
+  "description": "WooCommerce user experience optimize.",
   "require": {
     "ext-json": "*",
     "proteusthemes/wp-customizer-utilities": "^2.7"

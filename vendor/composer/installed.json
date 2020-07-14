@@ -47,6 +47,55 @@
         ]
     },
     {
+        "name": "kirki-framework/control-generic",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/kirki-framework/control-generic.git",
+            "reference": "49678ddd3e3d26c7f5a174e59f22afcc69cf7408"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/kirki-framework/control-generic/zipball/49678ddd3e3d26c7f5a174e59f22afcc69cf7408",
+            "reference": "49678ddd3e3d26c7f5a174e59f22afcc69cf7408",
+            "shasum": ""
+        },
+        "require": {
+            "kirki-framework/control-base": "*",
+            "kirki-framework/url-getter": "*",
+            "php": ">=5.6"
+        },
+        "time": "2019-07-06T20:26:46+00:00",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Kirki\\Control\\": "src/Control",
+                "Kirki\\Field\\": "src/Field"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Ari Stathopoulos",
+                "email": "aristath@gmail.com",
+                "homepage": "http://aristath.github.io",
+                "role": "Developer"
+            }
+        ],
+        "description": "Generic control for the Kirki Customizer framework.",
+        "homepage": "https://aristath.github.io/kirki",
+        "keywords": [
+            "customizer",
+            "framework",
+            "wordpress"
+        ]
+    },
+    {
         "name": "kirki-framework/control-radio",
         "version": "dev-master",
         "version_normalized": "9999999-dev",
@@ -87,6 +136,55 @@
             }
         ],
         "description": "Radio controls for the Kirki Customizer framework.",
+        "homepage": "https://aristath.github.io/kirki",
+        "keywords": [
+            "customizer",
+            "framework",
+            "wordpress"
+        ]
+    },
+    {
+        "name": "kirki-framework/control-slider",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/kirki-framework/control-slider.git",
+            "reference": "21f7b37097f2fdd2caa016ff6ad3932a2fde2080"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/kirki-framework/control-slider/zipball/21f7b37097f2fdd2caa016ff6ad3932a2fde2080",
+            "reference": "21f7b37097f2fdd2caa016ff6ad3932a2fde2080",
+            "shasum": ""
+        },
+        "require": {
+            "kirki-framework/control-generic": "*",
+            "kirki-framework/url-getter": "*",
+            "php": ">=5.6"
+        },
+        "time": "2020-04-05T08:09:09+00:00",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Kirki\\Control\\": "src/Control",
+                "Kirki\\Field\\": "src/Field"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Ari Stathopoulos",
+                "email": "aristath@gmail.com",
+                "homepage": "http://aristath.github.io",
+                "role": "Developer"
+            }
+        ],
+        "description": "Slider control for the Kirki Customizer framework.",
         "homepage": "https://aristath.github.io/kirki",
         "keywords": [
             "customizer",

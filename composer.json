@@ -4,7 +4,8 @@
   "require": {
     "ext-json": "*",
     "proteusthemes/wp-customizer-utilities": "^2.7",
-    "kirki-framework/control-radio": "dev-master"
+    "kirki-framework/control-radio": "dev-master",
+    "kirki-framework/control-slider": "dev-master"
   },
   "autoload": {
     "psr-4": {

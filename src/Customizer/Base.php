@@ -344,25 +344,28 @@ class Base
         /**
          * Layout container
          */
-        $this->wp_customize->add_control(
-            'rs_container_width',
-            [
-                'type'     => 'number',
-                'priority' => 5,
-                'label'    => esc_html__('Container width', '_s'),
-                'section'  => 'rs_container',
-            ]
-        );
+        $this->wp_customize->add_control(new \Kirki\Control\Slider($this->wp_customize, 'rs_container_width', [
+            'label'   => esc_html__('Container width', '_s'),
+            'section' => 'rs_container',
+            'priority' => 5,
+            'choices' => [
+                'min'  => 1140,
+                'max'  => 1600,
+                'step' => 1,
+            ],
+        ]));
 
-        $this->wp_customize->add_control(
-            'rs_container_focus_width',
-            [
-                'type'     => 'number',
-                'priority' => 5,
-                'label'    => esc_html__('Content focus container width', '_s'),
-                'section'  => 'rs_container',
-            ]
-        );
+
+        $this->wp_customize->add_control(new \Kirki\Control\Slider($this->wp_customize, 'rs_container_focus_width', [
+            'label'   => esc_html__('Content focus container width', '_s'),
+            'section' => 'rs_container',
+            'priority' => 5,
+            'choices' => [
+                'min'  => 600,
+                'max'  => 1600,
+                'step' => 1,
+            ],
+        ]));
 
 
         /**
@@ -384,13 +387,13 @@ class Base
         );
 
         $this->wp_customize->add_control(new \Kirki\Control\Radio_Image($this->wp_customize, 'rs_global_layout', [
-            'label'   => esc_html__('Sidebar Layout', '_s'),
-            'choices' => [
+            'label'    => esc_html__('Sidebar Layout', '_s'),
+            'choices'  => [
                 'sidebar-none'  => 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJYAAABqAQMAAABknzrDAAAABlBMVEX////V1dXUdjOkAAAAPUlEQVRIx2NgGAUkAcb////Y/+d/+P8AdcQoc8vhH/X/5P+j2kG+GA3CCgrwi43aMWrHqB2jdowEO4YpAACyKSE0IzIuBgAAAABJRU5ErkJggg==',
                 'sidebar-left'  => 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJYAAABqAgMAAAAjP0ATAAAACVBMVEX///8+yP/V1dXG9YqxAAAAWElEQVR42mNgGAXDE4RCQMDAKONaBQINWqtWrWBatQDIaxg8ygYqQIAOYwC6bwHUmYNH2eBPSMhgBQXKRr0w6oVRL4x6YdQLo14Y9cKoF0a9QCO3jYLhBADvmFlNY69qsQAAAABJRU5ErkJggg==',
                 'sidebar-right' => 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJYAAABqAgMAAAAjP0ATAAAACVBMVEX///8+yP/V1dXG9YqxAAAAWElEQVR42mNgGAXDE4RCQMDAKONaBQINWqtWrWBatQDIaxg8ygYqQIAOYwC6bwHUmYNH2eBPSMhgBQXKRr0w6oVRL4x6YdQLo14Y9cKoF0a9QCO3jYLhBADvmFlNY69qsQAAAABJRU5ErkJggg==',
             ],
-            'section' => 'rs_content_sidebar',
+            'section'  => 'rs_content_sidebar',
             'priority' => 5,
         ]));
 

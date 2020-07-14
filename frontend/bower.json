@@ -7,50 +7,7 @@
   "license": "MIT",
   "private": true,
   "dependencies": {
-    "jquery": "^3.0.0",
-    "slick-carousel": "^1.8.1",
-    "magnific-popup": "^1.1.0",
-    "smartmenus": "^1.1.0",
-    "imagesloaded": "^4.1.4",
-    "masonry-layout": "^4.2.2",
-    "isotope-layout": "^3.0.6",
-    "jquery-ias": "^2.3.1"
   },
   "overrides": {
-    "slick-carousel": {
-      "main": [
-        "./slick/slick.js",
-        "./slick/slick.css"
-      ]
-    },
-    "imagesloaded": {
-      "main": "./imagesloaded.pkgd.js",
-      "dependencies": {}
-    },
-    "outlayer": {
-      "main": [
-        "item.js",
-        "outlayer.js"
-      ]
-    },
-    "masonry-layout": {
-      "main": "./dist/masonry.pkgd.js",
-      "dependencies": {}
-    },
-    "isotope-layout": {
-      "main": "./dist/isotope.pkgd.js",
-      "dependencies": {}
-    },
-    "jquery-ias": {
-      "main": [
-        "./src/jquery-ias.js",
-        "./src/callbacks.js",
-        "./src/extension/history.js",
-        "./src/extension/noneleft.js",
-        "./src/extension/paging.js",
-        "./src/extension/spinner.js",
-        "./src/extension/trigger.js"
-      ]
-    }
   }
 }

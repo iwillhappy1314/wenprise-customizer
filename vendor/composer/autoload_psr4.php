@@ -8,4 +8,7 @@ $baseDir = dirname($vendorDir);
 return array(
     'Wenprise\\WooCommerceBooster\\' => array($baseDir . '/src'),
     'ProteusThemes\\CustomizerUtils\\' => array($vendorDir . '/proteusthemes/wp-customizer-utilities/src'),
+    'Kirki\\Field\\' => array($vendorDir . '/kirki-framework/control-radio/src/Field'),
+    'Kirki\\Control\\' => array($vendorDir . '/kirki-framework/control-base/src/Control', $vendorDir . '/kirki-framework/control-radio/src/Control'),
+    'Kirki\\' => array($vendorDir . '/kirki-framework/url-getter/src'),
 );

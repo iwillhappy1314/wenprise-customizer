@@ -3,7 +3,8 @@
   "description": "WooCommerce user experience optimize.",
   "require": {
     "ext-json": "*",
-    "proteusthemes/wp-customizer-utilities": "^2.7"
+    "proteusthemes/wp-customizer-utilities": "^2.7",
+    "kirki-framework/control-radio": "dev-master"
   },
   "autoload": {
     "psr-4": {
@@ -20,7 +21,7 @@
       "email": "iwillhappy1314@gmail.com"
     }
   ],
-  "minimum-stability": "stable",
+  "minimum-stability": "dev",
   "config": {
     "preferred-install": {
       "*": "dist"

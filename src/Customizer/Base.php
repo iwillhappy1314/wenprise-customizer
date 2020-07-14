@@ -152,6 +152,7 @@ class Base
         $this->wp_customize->add_setting('woocommerce_cart_redirect_after_add', ['type' => 'option', 'default' => 1]);
         $this->wp_customize->add_setting('woocommerce_enable_ajax_add_to_cart', ['type' => 'option', 'default' => 1]);
         $this->wp_customize->add_setting('woocommerce_enable_reviews', ['type' => 'option', 'default' => 0]);
+        $this->wp_customize->add_setting('my_control_code', ['type' => 'option', 'default' => 0]);
 
         // Layouts Settings
         $this->wp_customize->add_setting('rs_global_layout', ['default' => 'sidebar-none']);
@@ -365,7 +366,7 @@ class Base
 
 
         /**
-         * Layout content / sidbar
+         * Layout content / sidebar
          */
         $this->wp_customize->add_control(
             'rs_global_layout',
@@ -382,6 +383,17 @@ class Base
             ]
         );
 
+        $this->wp_customize->add_control(new \Kirki\Control\Radio_Image($this->wp_customize, 'rs_global_layout', [
+            'label'   => esc_html__('Sidebar Layout', '_s'),
+            'choices' => [
+                'sidebar-none'  => 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJYAAABqAQMAAABknzrDAAAABlBMVEX////V1dXUdjOkAAAAPUlEQVRIx2NgGAUkAcb////Y/+d/+P8AdcQoc8vhH/X/5P+j2kG+GA3CCgrwi43aMWrHqB2jdowEO4YpAACyKSE0IzIuBgAAAABJRU5ErkJggg==',
+                'sidebar-left'  => 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJYAAABqAgMAAAAjP0ATAAAACVBMVEX///8+yP/V1dXG9YqxAAAAWElEQVR42mNgGAXDE4RCQMDAKONaBQINWqtWrWBatQDIaxg8ygYqQIAOYwC6bwHUmYNH2eBPSMhgBQXKRr0w6oVRL4x6YdQLo14Y9cKoF0a9QCO3jYLhBADvmFlNY69qsQAAAABJRU5ErkJggg==',
+                'sidebar-right' => 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJYAAABqAgMAAAAjP0ATAAAACVBMVEX///8+yP/V1dXG9YqxAAAAWElEQVR42mNgGAXDE4RCQMDAKONaBQINWqtWrWBatQDIaxg8ygYqQIAOYwC6bwHUmYNH2eBPSMhgBQXKRr0w6oVRL4x6YdQLo14Y9cKoF0a9QCO3jYLhBADvmFlNY69qsQAAAABJRU5ErkJggg==',
+            ],
+            'section' => 'rs_content_sidebar',
+            'priority' => 5,
+        ]));
+
         $this->wp_customize->add_control(
             'rs_global_content_width',
             [
@@ -391,5 +403,17 @@ class Base
                 'section'  => 'rs_content_sidebar',
             ]
         );
+
+        $this->wp_customize->add_control(
+            'rs_global_content_width',
+            [
+                'type'     => 'slider',
+                'priority' => 5,
+                'label'    => esc_html__('Content Width', '_s'),
+                'section'  => 'rs_content_sidebar',
+            ]
+        );
+
+
     }
 }

@@ -7,7 +7,7 @@ namespace Composer\Autoload;
 class ComposerStaticInit446964b50d09030a6f6b9203bd1a712f
 {
     public static $files = array (
-        '0db0c0acff0daf29fe3e4cbb1b31b51a' => __DIR__ . '/../..' . '/src/init.php',
+        'b958dd4bd81ab4496ad433f22f90bc9e' => __DIR__ . '/../..' . '/src/init.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -19,6 +19,12 @@ class ComposerStaticInit446964b50d09030a6f6b9203bd1a712f
         array (
             'ProteusThemes\\CustomizerUtils\\' => 30,
         ),
+        'K' => 
+        array (
+            'Kirki\\Field\\' => 12,
+            'Kirki\\Control\\' => 14,
+            'Kirki\\' => 6,
+        ),
     );
 
     public static $prefixDirsPsr4 = array (
@@ -29,6 +35,19 @@ class ComposerStaticInit446964b50d09030a6f6b9203bd1a712f
         'ProteusThemes\\CustomizerUtils\\' => 
         array (
             0 => __DIR__ . '/..' . '/proteusthemes/wp-customizer-utilities/src',
+        ),
+        'Kirki\\Field\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/kirki-framework/control-radio/src/Field',
+        ),
+        'Kirki\\Control\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/kirki-framework/control-base/src/Control',
+            1 => __DIR__ . '/..' . '/kirki-framework/control-radio/src/Control',
+        ),
+        'Kirki\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/kirki-framework/url-getter/src',
         ),
     );
 

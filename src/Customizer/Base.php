@@ -173,6 +173,8 @@ class Base
         $this->wp_customize->add_setting('woocommerce_cart_redirect_after_add', ['type' => 'option', 'default' => 1]);
         $this->wp_customize->add_setting('woocommerce_enable_ajax_add_to_cart', ['type' => 'option', 'default' => 1]);
         $this->wp_customize->add_setting('woocommerce_enable_reviews', ['type' => 'option', 'default' => 0]);
+        $this->wp_customize->add_setting('woocommerce_enable_related_products', ['default' => 1]);
+        $this->wp_customize->add_setting('woocommerce_enable_upsell_products', ['default' => 1]);
 
 
         // Layouts Settings
@@ -317,16 +319,6 @@ class Base
             ]
         );
 
-        $this->wp_customize->add_control(new \Kirki\Control\Slider($this->wp_customize, 'rswc_single_product_content_width', [
-            'label'    => esc_html__('Product Content width', '_s'),
-            'section'  => 'rswc_single_product',
-            'priority' => 5,
-            'choices'  => [
-                'min'  => 600,
-                'max'  => 1600,
-                'step' => 1,
-            ],
-        ]));
 
         $this->wp_customize->add_control(
             'rswc_single_product_related_count',
@@ -343,7 +335,7 @@ class Base
             [
                 'type'     => 'number',
                 'priority' => 5,
-                'label'    => esc_html__('Number of Related Products', '_s'),
+                'label'    => esc_html__('Number of Related Columns', '_s'),
                 'section'  => 'rswc_single_product',
             ]
         );
@@ -352,9 +344,20 @@ class Base
             'label'    => esc_html__('Sidebar Layout', '_s'),
             'choices'  => $layout_choices,
             'section'  => 'rswc_single_product',
-            'priority' => 5,
+            'priority' => 1,
         ]));
 
+
+        $this->wp_customize->add_control(new \Kirki\Control\Slider($this->wp_customize, 'rswc_single_product_content_width', [
+            'label'    => esc_html__('Product Content width', '_s'),
+            'section'  => 'rswc_single_product',
+            'priority' => 1,
+            'choices'  => [
+                'min'  => 600,
+                'max'  => 1600,
+                'step' => 1,
+            ],
+        ]));
 
         $this->wp_customize->add_control(
             'woocommerce_cart_redirect_after_add',
@@ -382,6 +385,27 @@ class Base
                 'type'     => 'checkbox',
                 'priority' => 5,
                 'label'    => esc_html__('Enable product reviews', 'woocommerce'),
+                'section'  => 'rswc_single_product',
+            ]
+        );
+
+
+        $this->wp_customize->add_control(
+            'woocommerce_enable_related_products',
+            [
+                'type'     => 'checkbox',
+                'priority' => 5,
+                'label'    => esc_html__('Enable Related Products', 'woocommerce'),
+                'section'  => 'rswc_single_product',
+            ]
+        );
+
+        $this->wp_customize->add_control(
+            'woocommerce_enable_upsell_products',
+            [
+                'type'     => 'checkbox',
+                'priority' => 5,
+                'label'    => esc_html__('Enable Upsell', 'woocommerce'),
                 'section'  => 'rswc_single_product',
             ]
         );

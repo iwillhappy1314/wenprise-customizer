@@ -142,19 +142,7 @@ class Base
     public function register_settings()
     {
         // WooCommerce Catalog Settings
-        $this->wp_customize->add_setting('rswc_products_catalog_show_sidebar', ['default' => 0]);
-
-        // WooCommerce Single Page Settings
-        $this->wp_customize->add_setting('rswc_single_product_gallery_columns', ['default' => 4]);
-        $this->wp_customize->add_setting('rswc_single_product_related_count', ['default' => 4]);
-        $this->wp_customize->add_setting('rswc_single_product_related_columns', ['default' => 4]);
-        $this->wp_customize->add_setting('rswc_single_product_show_sidebar', ['default' => 0]);
-        $this->wp_customize->add_setting('woocommerce_cart_redirect_after_add', ['type' => 'option', 'default' => 1]);
-        $this->wp_customize->add_setting('woocommerce_enable_ajax_add_to_cart', ['type' => 'option', 'default' => 1]);
-        $this->wp_customize->add_setting('woocommerce_enable_reviews', ['type' => 'option', 'default' => 0]);
-        $this->wp_customize->add_setting('my_control_code', ['type' => 'option', 'default' => 0]);
-
-
+        $this->wp_customize->add_setting('rswc_products_catalog_sidebar_layout', ['default' => 'sidebar-none']);
         $this->wp_customize->add_setting('rswc_product_elements_order', [
             'type'              => 'theme_mod',
             'capability'        => 'edit_theme_options',
@@ -166,7 +154,7 @@ class Base
                 $sanitized = [];
 
                 foreach ($value as $sub_value) {
-                    if ( in_array($sub_value, ['title', 'price', 'review', 'category', 'description'], true)) {
+                    if (in_array($sub_value, ['title', 'price', 'review', 'category', 'description'], true)) {
                         $sanitized[] = $sub_value;
                     }
                 }
@@ -174,6 +162,17 @@ class Base
                 return $sanitized;
             },
         ]);
+
+
+        // WooCommerce Single Page Settings
+        $this->wp_customize->add_setting('rswc_single_product_gallery_columns', ['default' => 4]);
+        $this->wp_customize->add_setting('rswc_single_product_related_count', ['default' => 4]);
+        $this->wp_customize->add_setting('rswc_single_product_related_columns', ['default' => 4]);
+        $this->wp_customize->add_setting('rswc_single_product_sidebar_layout', ['default' => 'sidebar-none']);
+        $this->wp_customize->add_setting('rswc_single_product_content_width', ['default' => '1216']);
+        $this->wp_customize->add_setting('woocommerce_cart_redirect_after_add', ['type' => 'option', 'default' => 1]);
+        $this->wp_customize->add_setting('woocommerce_enable_ajax_add_to_cart', ['type' => 'option', 'default' => 1]);
+        $this->wp_customize->add_setting('woocommerce_enable_reviews', ['type' => 'option', 'default' => 0]);
 
 
         // Layouts Settings
@@ -264,6 +263,12 @@ class Base
      */
     public function register_controls()
     {
+        $layout_choices = [
+            'sidebar-none'  => 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJYAAABqAQMAAABknzrDAAAABlBMVEX////V1dXUdjOkAAAAPUlEQVRIx2NgGAUkAcb////Y/+d/+P8AdcQoc8vhH/X/5P+j2kG+GA3CCgrwi43aMWrHqB2jdowEO4YpAACyKSE0IzIuBgAAAABJRU5ErkJggg==',
+            'sidebar-left'  => 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJYAAABqAgMAAAAjP0ATAAAACVBMVEX///8+yP/V1dXG9YqxAAAAWElEQVR42mNgGAXDE4RCQMDAKONaBQINWqtWrWBatQDIaxg8ygYqQIAOYwC6bwHUmYNH2eBPSMhgBQXKRr0w6oVRL4x6YdQLo14Y9cKoF0a9QCO3jYLhBADvmFlNY69qsQAAAABJRU5ErkJggg==',
+            'sidebar-right' => 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJYAAABqAgMAAAAjP0ATAAAACVBMVEX///8+yP/V1dXG9YqxAAAAWElEQVR42mNgGAXDE4RCQMDAKONaBQINWqtWrWBatQDIaxg8ygYqQIAOYwC6bwHUmYNH2eBPSMhgBQXKRr0w6oVRL4x6YdQLo14Y9cKoF0a9QCO3jYLhBADvmFlNY69qsQAAAABJRU5ErkJggg==',
+        ];
+
         $this->wp_customize->add_control(
             'rswc_primary_color',
             [
@@ -278,15 +283,25 @@ class Base
         /**
          * WooCommerce Catalog page
          */
-        $this->wp_customize->add_control(
-            'rswc_products_catalog_show_sidebar',
-            [
-                'type'     => 'checkbox',
-                'priority' => 5,
-                'label'    => esc_html__('Show Sidebar', '_s'),
-                'section'  => 'woocommerce_product_catalog',
-            ]
-        );
+        $this->wp_customize->add_control(new \Kirki\Control\Radio_Image($this->wp_customize, 'rswc_products_catalog_sidebar_layout', [
+            'label'    => esc_html__('Sidebar Layout', '_s'),
+            'choices'  => $layout_choices,
+            'section'  => 'woocommerce_product_catalog',
+            'priority' => 5,
+        ]));
+
+
+        $this->wp_customize->add_control(new \Kirki\Control\Sortable($this->wp_customize, 'rswc_product_elements_order', [
+            'label'   => esc_html__('Elements order', '_s'),
+            'section' => 'woocommerce_product_catalog',
+            'choices' => [
+                'title'       => esc_html__('Title', '_s'),
+                'price'       => esc_html__('Price', '_s'),
+                'review'      => esc_html__('Review', '_s'),
+                'category'    => esc_html__('Product Category', '_s'),
+                'description' => esc_html__('Short Description', '_s'),
+            ],
+        ]));
 
 
         /**
@@ -301,6 +316,17 @@ class Base
                 'section'  => 'rswc_single_product',
             ]
         );
+
+        $this->wp_customize->add_control(new \Kirki\Control\Slider($this->wp_customize, 'rswc_single_product_content_width', [
+            'label'    => esc_html__('Product Content width', '_s'),
+            'section'  => 'rswc_single_product',
+            'priority' => 5,
+            'choices'  => [
+                'min'  => 600,
+                'max'  => 1600,
+                'step' => 1,
+            ],
+        ]));
 
         $this->wp_customize->add_control(
             'rswc_single_product_related_count',
@@ -322,15 +348,12 @@ class Base
             ]
         );
 
-        $this->wp_customize->add_control(
-            'rswc_single_product_show_sidebar',
-            [
-                'type'     => 'checkbox',
-                'priority' => 5,
-                'label'    => esc_html__('Show Sidebar', '_s'),
-                'section'  => 'rswc_single_product',
-            ]
-        );
+        $this->wp_customize->add_control(new \Kirki\Control\Radio_Image($this->wp_customize, 'rswc_single_product_sidebar_layout', [
+            'label'    => esc_html__('Sidebar Layout', '_s'),
+            'choices'  => $layout_choices,
+            'section'  => 'rswc_single_product',
+            'priority' => 5,
+        ]));
 
 
         $this->wp_customize->add_control(
@@ -390,19 +413,6 @@ class Base
         ]));
 
 
-        $this->wp_customize->add_control(new \Kirki\Control\Sortable($this->wp_customize, 'rswc_product_elements_order', [
-            'label'   => esc_html__('Elements order', '_s'),
-            'section' => 'woocommerce_product_catalog',
-            'choices' => [
-                'title'       => esc_html__('Title', '_s'),
-                'price'       => esc_html__('Price', '_s'),
-                'review'      => esc_html__('Review', '_s'),
-                'category'    => esc_html__('Product Category', '_s'),
-                'description' => esc_html__('Short Description', '_s'),
-            ],
-        ]));
-
-
         /**
          * Layout content / sidebar
          */
@@ -423,11 +433,7 @@ class Base
 
         $this->wp_customize->add_control(new \Kirki\Control\Radio_Image($this->wp_customize, 'rs_global_layout', [
             'label'    => esc_html__('Sidebar Layout', '_s'),
-            'choices'  => [
-                'sidebar-none'  => 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJYAAABqAQMAAABknzrDAAAABlBMVEX////V1dXUdjOkAAAAPUlEQVRIx2NgGAUkAcb////Y/+d/+P8AdcQoc8vhH/X/5P+j2kG+GA3CCgrwi43aMWrHqB2jdowEO4YpAACyKSE0IzIuBgAAAABJRU5ErkJggg==',
-                'sidebar-left'  => 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJYAAABqAgMAAAAjP0ATAAAACVBMVEX///8+yP/V1dXG9YqxAAAAWElEQVR42mNgGAXDE4RCQMDAKONaBQINWqtWrWBatQDIaxg8ygYqQIAOYwC6bwHUmYNH2eBPSMhgBQXKRr0w6oVRL4x6YdQLo14Y9cKoF0a9QCO3jYLhBADvmFlNY69qsQAAAABJRU5ErkJggg==',
-                'sidebar-right' => 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJYAAABqAgMAAAAjP0ATAAAACVBMVEX///8+yP/V1dXG9YqxAAAAWElEQVR42mNgGAXDE4RCQMDAKONaBQINWqtWrWBatQDIaxg8ygYqQIAOYwC6bwHUmYNH2eBPSMhgBQXKRr0w6oVRL4x6YdQLo14Y9cKoF0a9QCO3jYLhBADvmFlNY69qsQAAAABJRU5ErkJggg==',
-            ],
+            'choices'  => $layout_choices,
             'section'  => 'rs_content_sidebar',
             'priority' => 5,
         ]));

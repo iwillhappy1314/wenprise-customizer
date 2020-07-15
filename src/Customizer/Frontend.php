@@ -53,9 +53,17 @@ class Frontend
     public function output_body_class($classes)
     {
 
-        $global_layout = get_theme_mod('rs_global_layout', 'sidebar-none');
+        $layout = get_theme_mod('rs_global_layout', 'sidebar-none');
 
-        $classes[] = $global_layout;
+        if (is_shop() || is_product_category() || is_product_tag()) {
+            $layout = get_theme_mod('rswc_products_catalog_sidebar_layout', 'sidebar-none');
+        }
+
+        if (is_product()) {
+            $layout = get_theme_mod('rswc_single_product_sidebar_layout', 'sidebar-none');
+        }
+
+        $classes[] = $layout;
 
         return $classes;
     }
@@ -104,6 +112,7 @@ class Frontend
         // Pixel to rem conversion.
         $container_width       = absint(get_theme_mod('rs_container_width', 1216));
         $container_focus_width = absint(get_theme_mod('rs_container_focus_width', 1216));
+        $product_content_width = absint(get_theme_mod('rswc_single_product_content_width', 1216));
 
         $css = '';
         $css .= sprintf(
@@ -114,6 +123,11 @@ class Frontend
         $css .= sprintf(
             '@media (min-width: 1280px) { .container--focus, .single-post.sidebar-none .site__main, .category.sidebar-none .site__main{ max-width: %dpx; margin-left: auto; margin-right: auto } }',
             $container_focus_width
+        );
+
+        $css .= sprintf(
+            '@media (min-width: 1280px) { .rswc-product-body { max-width: %dpx; } }',
+            $product_content_width
         );
 
         return $css;

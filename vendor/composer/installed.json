@@ -193,6 +193,55 @@
         ]
     },
     {
+        "name": "kirki-framework/control-sortable",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/kirki-framework/control-sortable.git",
+            "reference": "05d0fbdf4e5486888b6df0b0a21677c2b7546f06"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/kirki-framework/control-sortable/zipball/05d0fbdf4e5486888b6df0b0a21677c2b7546f06",
+            "reference": "05d0fbdf4e5486888b6df0b0a21677c2b7546f06",
+            "shasum": ""
+        },
+        "require": {
+            "kirki-framework/control-base": "*",
+            "kirki-framework/url-getter": "*",
+            "php": ">=5.6"
+        },
+        "time": "2019-10-20T11:42:14+00:00",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Kirki\\Control\\": "src/Control",
+                "Kirki\\Field\\": "src/Field"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Ari Stathopoulos",
+                "email": "aristath@gmail.com",
+                "homepage": "http://aristath.github.io",
+                "role": "Developer"
+            }
+        ],
+        "description": "Sortable control for the Kirki Customizer framework.",
+        "homepage": "https://aristath.github.io/kirki",
+        "keywords": [
+            "customizer",
+            "framework",
+            "wordpress"
+        ]
+    },
+    {
         "name": "kirki-framework/url-getter",
         "version": "dev-master",
         "version_normalized": "9999999-dev",

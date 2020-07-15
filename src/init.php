@@ -8,6 +8,7 @@ use Kirki\Control\Radio;
 use Kirki\Control\Radio_Buttonset;
 use Kirki\Control\Radio_Image;
 use Kirki\Control\Slider;
+use Kirki\Control\Sortable;
 
 if (function_exists('add_action')) {
 
@@ -17,6 +18,7 @@ if (function_exists('add_action')) {
         $wp_customize->register_control_type(Radio_Buttonset::class);
         $wp_customize->register_control_type(Radio_Image::class);
         $wp_customize->register_control_type(Slider::class);
+        $wp_customize->register_control_type(Sortable::class);
 
         new \Wenprise\WooCommerceBooster\Customizer\Base($wp_customize);
     });

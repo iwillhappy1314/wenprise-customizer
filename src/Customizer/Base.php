@@ -154,6 +154,28 @@ class Base
         $this->wp_customize->add_setting('woocommerce_enable_reviews', ['type' => 'option', 'default' => 0]);
         $this->wp_customize->add_setting('my_control_code', ['type' => 'option', 'default' => 0]);
 
+
+        $this->wp_customize->add_setting('rswc_product_elements_order', [
+            'type'              => 'theme_mod',
+            'capability'        => 'edit_theme_options',
+            'default'           => ['price', 'title'],
+            'transport'         => 'refresh', // Or postMessage.
+            'sanitize_callback' => function ($value)
+            {
+                $value     = (array)$value;
+                $sanitized = [];
+
+                foreach ($value as $sub_value) {
+                    if ( in_array($sub_value, ['title', 'price', 'review', 'category', 'description'], true)) {
+                        $sanitized[] = $sub_value;
+                    }
+                }
+
+                return $sanitized;
+            },
+        ]);
+
+
         // Layouts Settings
         $this->wp_customize->add_setting('rs_global_layout', ['default' => 'sidebar-none']);
         $this->wp_customize->add_setting('rs_global_content_width', ['default' => '85']);
@@ -345,10 +367,10 @@ class Base
          * Layout container
          */
         $this->wp_customize->add_control(new \Kirki\Control\Slider($this->wp_customize, 'rs_container_width', [
-            'label'   => esc_html__('Container width', '_s'),
-            'section' => 'rs_container',
+            'label'    => esc_html__('Container width', '_s'),
+            'section'  => 'rs_container',
             'priority' => 5,
-            'choices' => [
+            'choices'  => [
                 'min'  => 1140,
                 'max'  => 1600,
                 'step' => 1,
@@ -357,13 +379,26 @@ class Base
 
 
         $this->wp_customize->add_control(new \Kirki\Control\Slider($this->wp_customize, 'rs_container_focus_width', [
-            'label'   => esc_html__('Content focus container width', '_s'),
-            'section' => 'rs_container',
+            'label'    => esc_html__('Content focus container width', '_s'),
+            'section'  => 'rs_container',
             'priority' => 5,
-            'choices' => [
+            'choices'  => [
                 'min'  => 600,
                 'max'  => 1600,
                 'step' => 1,
+            ],
+        ]));
+
+
+        $this->wp_customize->add_control(new \Kirki\Control\Sortable($this->wp_customize, 'rswc_product_elements_order', [
+            'label'   => esc_html__('Elements order', '_s'),
+            'section' => 'woocommerce_product_catalog',
+            'choices' => [
+                'title'       => esc_html__('Title', '_s'),
+                'price'       => esc_html__('Price', '_s'),
+                'review'      => esc_html__('Review', '_s'),
+                'category'    => esc_html__('Product Category', '_s'),
+                'description' => esc_html__('Short Description', '_s'),
             ],
         ]));
 

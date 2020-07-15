@@ -41,6 +41,7 @@ class ComposerStaticInit446964b50d09030a6f6b9203bd1a712f
             0 => __DIR__ . '/..' . '/kirki-framework/control-generic/src/Field',
             1 => __DIR__ . '/..' . '/kirki-framework/control-radio/src/Field',
             2 => __DIR__ . '/..' . '/kirki-framework/control-slider/src/Field',
+            3 => __DIR__ . '/..' . '/kirki-framework/control-sortable/src/Field',
         ),
         'Kirki\\Control\\' => 
         array (
@@ -48,6 +49,7 @@ class ComposerStaticInit446964b50d09030a6f6b9203bd1a712f
             1 => __DIR__ . '/..' . '/kirki-framework/control-generic/src/Control',
             2 => __DIR__ . '/..' . '/kirki-framework/control-radio/src/Control',
             3 => __DIR__ . '/..' . '/kirki-framework/control-slider/src/Control',
+            4 => __DIR__ . '/..' . '/kirki-framework/control-sortable/src/Control',
         ),
         'Kirki\\' => 
         array (

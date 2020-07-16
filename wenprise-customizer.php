@@ -1,6 +1,6 @@
 <?php
 /*
-Plugin Name:        Wenprise WooCommerce Booster
+Plugin Name:        Wenprise Customizer
 Plugin URI:         https://www.wpzhiku.com/
 Description:        WooCommerce user experience optimize.
 Version:            1.0.0

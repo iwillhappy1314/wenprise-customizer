@@ -7,7 +7,7 @@
  * @package consultpresslite-pt
  */
 
-namespace Wenprise\WooCommerceBooster\Customizer;
+namespace Wenprise\Customizer;
 
 /**
  * Customizer frontend related code

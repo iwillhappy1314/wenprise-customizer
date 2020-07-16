@@ -5,7 +5,7 @@
  * @package _s
  */
 
-namespace Wenprise\WooCommerceBooster\Customizer;
+namespace Wenprise\Customizer;
 
 use ProteusThemes\CustomizerUtils\CacheManager;
 use ProteusThemes\CustomizerUtils\Helpers;

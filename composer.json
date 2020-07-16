@@ -1,5 +1,5 @@
 {
-  "name": "wenprise/woocommerce-booster",
+  "name": "wenprise/customizer",
   "description": "WooCommerce user experience optimize.",
   "require": {
     "ext-json": "*",
@@ -10,7 +10,7 @@
   },
   "autoload": {
     "psr-4": {
-      "Wenprise\\WooCommerceBooster\\": "src/"
+      "Wenprise\\Customizer\\": "src/"
     },
     "files": [
       "src/init.php"

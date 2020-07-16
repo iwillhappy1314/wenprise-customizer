@@ -20,12 +20,12 @@ if (function_exists('add_action')) {
         $wp_customize->register_control_type(Slider::class);
         $wp_customize->register_control_type(Sortable::class);
 
-        new \Wenprise\WooCommerceBooster\Customizer\Base($wp_customize);
+        new \Wenprise\Customizer\Base($wp_customize);
     });
 
     add_action('init', function ()
     {
-        new \Wenprise\WooCommerceBooster\Customizer\Frontend();
+        new \Wenprise\Customizer\Frontend();
     });
 
 

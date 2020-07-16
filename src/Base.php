@@ -95,9 +95,6 @@ class Base
             '.woocommerce .button.checkout:hover',
         ];
 
-        $this->wp_customize->add_setting('rs_container_width', ['default' => '1216']);
-        $this->wp_customize->add_setting('rs_container_focus_width', ['default' => '750']);
-
         return [
             'rswc_primary_color' => [
                 'default'   => '#0bcda5',
@@ -164,22 +161,71 @@ class Base
         ]);
 
 
-        // WooCommerce Single Page Settings
-        $this->wp_customize->add_setting('rswc_single_product_gallery_columns', ['default' => 4]);
-        $this->wp_customize->add_setting('rswc_single_product_related_count', ['default' => 4]);
-        $this->wp_customize->add_setting('rswc_single_product_related_columns', ['default' => 4]);
-        $this->wp_customize->add_setting('rswc_single_product_sidebar_layout', ['default' => 'sidebar-none']);
-        $this->wp_customize->add_setting('rswc_single_product_content_width', ['default' => '1216']);
-        $this->wp_customize->add_setting('woocommerce_cart_redirect_after_add', ['type' => 'option', 'default' => 1]);
-        $this->wp_customize->add_setting('woocommerce_enable_ajax_add_to_cart', ['type' => 'option', 'default' => 1]);
-        $this->wp_customize->add_setting('woocommerce_enable_reviews', ['type' => 'option', 'default' => 0]);
-        $this->wp_customize->add_setting('woocommerce_enable_related_products', ['default' => 1]);
-        $this->wp_customize->add_setting('woocommerce_enable_upsell_products', ['default' => 1]);
+        $this->wp_customize->add_setting('rs_container_width', [
+            'default'   => '1216',
+            'transport' => 'postMessage',
+        ]);
 
+        $this->wp_customize->add_setting('rs_container_focus_width', [
+            'default'   => '750',
+            'transport' => 'postMessage',
+        ]);
+
+
+        // WooCommerce Single Page Settings
+        $this->wp_customize->add_setting('rswc_single_product_gallery_columns', [
+            'default'   => 4,
+            'transport' => 'postMessage',
+        ]);
+
+        $this->wp_customize->add_setting('rswc_single_product_related_count', [
+            'default' => 4,
+        ]);
+
+        $this->wp_customize->add_setting('rswc_single_product_related_columns', [
+            'default' => 4,
+        ]);
+
+        $this->wp_customize->add_setting('rswc_single_product_sidebar_layout', [
+            'default' => 'sidebar-none',
+        ]);
+
+        $this->wp_customize->add_setting('rswc_single_product_content_width', [
+            'default'   => '1216',
+            'transport' => 'postMessage',
+        ]);
+
+        $this->wp_customize->add_setting('woocommerce_cart_redirect_after_add', [
+            'type'    => 'option',
+            'default' => 1,
+        ]);
+
+        $this->wp_customize->add_setting('woocommerce_enable_ajax_add_to_cart', [
+            'type'    => 'option',
+            'default' => 1,
+        ]);
+
+        $this->wp_customize->add_setting('woocommerce_enable_reviews', [
+            'type'    => 'option',
+            'default' => 0,
+        ]);
+
+        $this->wp_customize->add_setting('woocommerce_enable_related_products', [
+            'default' => 1,
+        ]);
+
+        $this->wp_customize->add_setting('woocommerce_enable_upsell_products', [
+            'default' => 1,
+        ]);
 
         // Layouts Settings
-        $this->wp_customize->add_setting('rs_global_layout', ['default' => 'sidebar-none']);
-        $this->wp_customize->add_setting('rs_global_content_width', ['default' => '85']);
+        $this->wp_customize->add_setting('rs_global_layout', [
+            'default' => 'sidebar-none',
+        ]);
+
+        $this->wp_customize->add_setting('rs_global_content_width', [
+            'default' => '85',
+        ]);
 
         // All the DynamicCSS settings.
         foreach ($this->dynamic_css as $setting_id => $args) {
@@ -247,8 +293,15 @@ class Base
      */
     public function register_partials()
     {
+
+        $primary_selector = [
+            '.woocommerce .button.add_to_cart_button',
+            '.woocommerce .button.alt',
+            '.woocommerce .button.checkout',
+        ];
+
         $this->wp_customize->selective_refresh->add_partial('dynamic_css', [
-            'selector'        => 'head > #wp-utils-dynamic-css-style-tag',
+            'selector'        => implode(', ', $primary_selector),
             'settings'        => array_keys($this->dynamic_css),
             'render_callback' => function ()
             {

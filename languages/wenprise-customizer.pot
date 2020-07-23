@@ -1,0 +1,150 @@
+# Copyright (C) 2020 weForms
+# This file is distributed under the GPL2 or later.
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: wenprise customizer\n"
+"Report-Msgid-Bugs-To: https://wedevs.com/contact/\n"
+"POT-Creation-Date: 2020-07-23 22:18+0800\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2020-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
+"Language: en\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_x:1,2c;_ex:1,2c;_n:1,2;_nx:1,2,4c;_n_noop:1,2;"
+"_nx_noop:1,2,3c;esc_attr__;esc_html__;esc_attr_e;esc_html_e;esc_attr_x:1,2c;"
+"esc_html_x:1,2c\n"
+"X-Poedit-Basepath: ..\n"
+"X-Textdomain-Support: yes\n"
+"X-Generator: Poedit 2.3\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: vendor\n"
+"X-Poedit-SearchPathExcluded-1: frontend\n"
+
+#: src/Base.php:248
+msgid "Layouts"
+msgstr ""
+
+#: src/Base.php:261
+msgid "Colors"
+msgstr ""
+
+#: src/Base.php:262
+msgid "WooCommerce Color Schema"
+msgstr ""
+
+#: src/Base.php:268
+msgid "Single Product"
+msgstr ""
+
+#: src/Base.php:269
+msgid "Single Product Page Settings"
+msgstr ""
+
+#: src/Base.php:275
+msgid "Container"
+msgstr ""
+
+#: src/Base.php:281
+msgid "Content/Sidebar"
+msgstr ""
+
+#: src/Base.php:282
+msgid "Content Sidebar Layout"
+msgstr ""
+
+#: src/Base.php:332
+msgid "Primary color"
+msgstr ""
+
+#: src/Base.php:342 src/Base.php:397 src/Base.php:501 src/Base.php:512
+msgid "Sidebar Layout"
+msgstr ""
+
+#: src/Base.php:350
+msgid "Elements order"
+msgstr ""
+
+#: src/Base.php:353
+msgid "Title"
+msgstr ""
+
+#: src/Base.php:354
+msgid "Price"
+msgstr ""
+
+#: src/Base.php:355
+msgid "Review"
+msgstr ""
+
+#: src/Base.php:356
+msgid "Product Category"
+msgstr ""
+
+#: src/Base.php:357
+msgid "Short Description"
+msgstr ""
+
+#: src/Base.php:370
+msgid "Columns of Gallery thumbnail"
+msgstr ""
+
+#: src/Base.php:381
+msgid "Number of Related Products"
+msgstr ""
+
+#: src/Base.php:391
+msgid "Number of Related Columns"
+msgstr ""
+
+#: src/Base.php:405
+msgid "Product Content width"
+msgstr ""
+
+#: src/Base.php:420
+msgid "Redirect to the cart page after successful addition"
+msgstr ""
+
+#: src/Base.php:430
+msgid "Enable AJAX add to cart buttons on archives"
+msgstr ""
+
+#: src/Base.php:440
+msgid "Enable product reviews"
+msgstr ""
+
+#: src/Base.php:451
+msgid "Enable Related Products"
+msgstr ""
+
+#: src/Base.php:461
+msgid "Enable Upsell"
+msgstr ""
+
+#: src/Base.php:470
+msgid "Container width"
+msgstr ""
+
+#: src/Base.php:482
+msgid "Content focus container width"
+msgstr ""
+
+#: src/Base.php:503
+msgid "No Sidebar"
+msgstr ""
+
+#: src/Base.php:504
+msgid "Left Sidebar"
+msgstr ""
+
+#: src/Base.php:505
+msgid "Right Sidebar"
+msgstr ""
+
+#: src/Base.php:523 src/Base.php:533
+msgid "Content Width"
+msgstr ""

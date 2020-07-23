@@ -26,6 +26,7 @@ if (function_exists('add_action')) {
     add_action('init', function ()
     {
         new \Wenprise\Customizer\Frontend();
+        new \Wenprise\Customizer\Hooks();
     });
 
 

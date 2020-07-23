@@ -11,3 +11,5 @@ License URI:        http://opensource.org/licenses/MIT
 */
 
 require_once(plugin_dir_path(__FILE__) . 'vendor/autoload.php');
+
+load_plugin_textdomain('wenprise-customizer', false, dirname(plugin_basename(__FILE__)) . '/languages/');

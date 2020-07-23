@@ -245,7 +245,7 @@ class Base
     {
         $this->wp_customize->add_panel('layouts', [
             'priority' => 25,
-            'title'    => __('Layouts', '_s'),
+            'title'    => __('Layouts', 'wenprise-customizer'),
         ]);
     }
 
@@ -258,28 +258,28 @@ class Base
     public function register_sections()
     {
         $this->wp_customize->add_section('rswc_color_schema', [
-            'title'       => esc_html__('Colors', '_s'),
-            'description' => esc_html__('WooCommerce Color Schema', '_s'),
+            'title'       => esc_html__('Colors', 'wenprise-customizer'),
+            'description' => esc_html__('WooCommerce Color Schema', 'wenprise-customizer'),
             'panel'       => 'woocommerce',
             'priority'    => 30,
         ]);
 
         $this->wp_customize->add_section('rswc_single_product', [
-            'title'       => esc_html__('Single Product', '_s'),
-            'description' => esc_html__('Single Product Page Settings', '_s'),
+            'title'       => esc_html__('Single Product', 'wenprise-customizer'),
+            'description' => esc_html__('Single Product Page Settings', 'wenprise-customizer'),
             'panel'       => 'woocommerce',
             'priority'    => 16,
         ]);
 
         $this->wp_customize->add_section('rs_container', [
-            'title'    => esc_html__('Container', '_s'),
+            'title'    => esc_html__('Container', 'wenprise-customizer'),
             'panel'    => 'layouts',
             'priority' => 16,
         ]);
 
         $this->wp_customize->add_section('rs_content_sidebar', [
-            'title'       => esc_html__('Content/Sidebar', '_s'),
-            'description' => esc_html__('Content Sidebar Layout', '_s'),
+            'title'       => esc_html__('Content/Sidebar', 'wenprise-customizer'),
+            'description' => esc_html__('Content Sidebar Layout', 'wenprise-customizer'),
             'panel'       => 'layouts',
             'priority'    => 16,
         ]);
@@ -329,7 +329,7 @@ class Base
             [
                 'type'     => 'color',
                 'priority' => 5,
-                'label'    => esc_html__('Primary color', '_s'),
+                'label'    => esc_html__('Primary color', 'wenprise-customizer'),
                 'section'  => 'rswc_color_schema',
             ]
         );
@@ -339,7 +339,7 @@ class Base
          * WooCommerce Catalog page
          */
         $this->wp_customize->add_control(new \Kirki\Control\Radio_Image($this->wp_customize, 'rswc_products_catalog_sidebar_layout', [
-            'label'    => esc_html__('Sidebar Layout', '_s'),
+            'label'    => esc_html__('Sidebar Layout', 'wenprise-customizer'),
             'choices'  => $layout_choices,
             'section'  => 'woocommerce_product_catalog',
             'priority' => 5,
@@ -347,14 +347,14 @@ class Base
 
 
         $this->wp_customize->add_control(new \Kirki\Control\Sortable($this->wp_customize, 'rswc_product_elements_order', [
-            'label'   => esc_html__('Elements order', '_s'),
+            'label'   => esc_html__('Elements order', 'wenprise-customizer'),
             'section' => 'woocommerce_product_catalog',
             'choices' => [
-                'title'       => esc_html__('Title', '_s'),
-                'price'       => esc_html__('Price', '_s'),
-                'review'      => esc_html__('Review', '_s'),
-                'category'    => esc_html__('Product Category', '_s'),
-                'description' => esc_html__('Short Description', '_s'),
+                'title'       => esc_html__('Title', 'wenprise-customizer'),
+                'price'       => esc_html__('Price', 'wenprise-customizer'),
+                'review'      => esc_html__('Review', 'wenprise-customizer'),
+                'category'    => esc_html__('Product Category', 'wenprise-customizer'),
+                'description' => esc_html__('Short Description', 'wenprise-customizer'),
             ],
         ]));
 
@@ -367,7 +367,7 @@ class Base
             [
                 'type'     => 'number',
                 'priority' => 5,
-                'label'    => esc_html__('Columns of Gallery thumbnail', '_s'),
+                'label'    => esc_html__('Columns of Gallery thumbnail', 'wenprise-customizer'),
                 'section'  => 'rswc_single_product',
             ]
         );
@@ -378,7 +378,7 @@ class Base
             [
                 'type'     => 'number',
                 'priority' => 5,
-                'label'    => esc_html__('Number of Related Products', '_s'),
+                'label'    => esc_html__('Number of Related Products', 'wenprise-customizer'),
                 'section'  => 'rswc_single_product',
             ]
         );
@@ -388,13 +388,13 @@ class Base
             [
                 'type'     => 'number',
                 'priority' => 5,
-                'label'    => esc_html__('Number of Related Columns', '_s'),
+                'label'    => esc_html__('Number of Related Columns', 'wenprise-customizer'),
                 'section'  => 'rswc_single_product',
             ]
         );
 
         $this->wp_customize->add_control(new \Kirki\Control\Radio_Image($this->wp_customize, 'rswc_single_product_sidebar_layout', [
-            'label'    => esc_html__('Sidebar Layout', '_s'),
+            'label'    => esc_html__('Sidebar Layout', 'wenprise-customizer'),
             'choices'  => $layout_choices,
             'section'  => 'rswc_single_product',
             'priority' => 1,
@@ -402,7 +402,7 @@ class Base
 
 
         $this->wp_customize->add_control(new \Kirki\Control\Slider($this->wp_customize, 'rswc_single_product_content_width', [
-            'label'    => esc_html__('Product Content width', '_s'),
+            'label'    => esc_html__('Product Content width', 'wenprise-customizer'),
             'section'  => 'rswc_single_product',
             'priority' => 1,
             'choices'  => [
@@ -448,7 +448,7 @@ class Base
             [
                 'type'     => 'checkbox',
                 'priority' => 5,
-                'label'    => esc_html__('Enable Related Products', 'woocommerce'),
+                'label'    => esc_html__('Enable Related Products', 'wenprise-customizer'),
                 'section'  => 'rswc_single_product',
             ]
         );
@@ -458,7 +458,7 @@ class Base
             [
                 'type'     => 'checkbox',
                 'priority' => 5,
-                'label'    => esc_html__('Enable Upsell', 'woocommerce'),
+                'label'    => esc_html__('Enable Upsell', 'wenprise-customizer'),
                 'section'  => 'rswc_single_product',
             ]
         );
@@ -467,7 +467,7 @@ class Base
          * Layout container
          */
         $this->wp_customize->add_control(new \Kirki\Control\Slider($this->wp_customize, 'rs_container_width', [
-            'label'    => esc_html__('Container width', '_s'),
+            'label'    => esc_html__('Container width', 'wenprise-customizer'),
             'section'  => 'rs_container',
             'priority' => 5,
             'choices'  => [
@@ -479,7 +479,7 @@ class Base
 
 
         $this->wp_customize->add_control(new \Kirki\Control\Slider($this->wp_customize, 'rs_container_focus_width', [
-            'label'    => esc_html__('Content focus container width', '_s'),
+            'label'    => esc_html__('Content focus container width', 'wenprise-customizer'),
             'section'  => 'rs_container',
             'priority' => 5,
             'choices'  => [
@@ -498,18 +498,18 @@ class Base
             [
                 'type'     => 'select',
                 'priority' => 5,
-                'label'    => esc_html__('Sidebar Layout', '_s'),
+                'label'    => esc_html__('Sidebar Layout', 'wenprise-customizer'),
                 'choices'  => [
-                    'sidebar-none'  => esc_html__('No Sidebar', '_s'),
-                    'sidebar-left'  => esc_html__('Left Sidebar', '_s'),
-                    'sidebar-right' => esc_html__('Right Sidebar', '_s'),
+                    'sidebar-none'  => esc_html__('No Sidebar', 'wenprise-customizer'),
+                    'sidebar-left'  => esc_html__('Left Sidebar', 'wenprise-customizer'),
+                    'sidebar-right' => esc_html__('Right Sidebar', 'wenprise-customizer'),
                 ],
                 'section'  => 'rs_content_sidebar',
             ]
         );
 
         $this->wp_customize->add_control(new \Kirki\Control\Radio_Image($this->wp_customize, 'rs_global_layout', [
-            'label'    => esc_html__('Sidebar Layout', '_s'),
+            'label'    => esc_html__('Sidebar Layout', 'wenprise-customizer'),
             'choices'  => $layout_choices,
             'section'  => 'rs_content_sidebar',
             'priority' => 5,
@@ -520,7 +520,7 @@ class Base
             [
                 'type'     => 'slider',
                 'priority' => 5,
-                'label'    => esc_html__('Content Width', '_s'),
+                'label'    => esc_html__('Content Width', 'wenprise-customizer'),
                 'section'  => 'rs_content_sidebar',
             ]
         );
@@ -530,7 +530,7 @@ class Base
             [
                 'type'     => 'slider',
                 'priority' => 5,
-                'label'    => esc_html__('Content Width', '_s'),
+                'label'    => esc_html__('Content Width', 'wenprise-customizer'),
                 'section'  => 'rs_content_sidebar',
             ]
         );

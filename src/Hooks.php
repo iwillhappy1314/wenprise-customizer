@@ -40,9 +40,14 @@ class Hooks
          */
         add_filter('woocommerce_output_related_products_args', [$this, 'woocommerce_related_products_args']);
 
+        /**
+         * Add checkout progress
+         */
         add_filter('woocommerce_before_cart', [$this, 'checkout_progress']);
         add_filter('woocommerce_before_checkout_form', [$this, 'checkout_progress']);
         add_filter('woocommerce_before_thankyou', [$this, 'checkout_progress']);
+
+        add_action('wp_footer', [$this, 'mobile_footer_navbar']);
 
         $this->render_product_loop_elements();
     }
@@ -147,16 +152,16 @@ class Hooks
                 <ul class="rs-checkout-bar">
                     <li class="active first">
                         <a href="<?php echo get_permalink(wc_get_page_id('cart')); ?>">
-                            <?php esc_html_e('Shopping Cart', '_s'); ?>
+                            <?php esc_html_e('Shopping Cart', 'wenprise-customizer'); ?>
                         </a>
                     </li>
                     <li class="<?= is_checkout() && ! is_order_received_page() ? 'next' : ''; ?><?= is_order_received_page() ? 'active' : ''; ?>">
                         <a href="<?php echo get_permalink(wc_get_page_id('checkout')); ?>">
-                            <?php esc_html_e('Shipping and Checkout', '_s'); ?>
+                            <?php esc_html_e('Shipping and Checkout', 'wenprise-customizer'); ?>
                         </a>
                     </li>
                     <li class="<?= is_order_received_page() ? 'active last' : ''; ?>">
-                        <?php esc_html_e('Confirmation', '_s'); ?>
+                        <?php esc_html_e('Confirmation', 'wenprise-customizer'); ?>
                     </li>
                 </ul>
             </div>
@@ -164,4 +169,38 @@ class Hooks
             <?php
         }
     }
+
+
+    public function mobile_footer_navbar()
+    { ?>
+        <div class="rs-mobile-nav fixed bottom-0 w-full bg-white z-50 show lg:hidden">
+            <div class="flex text-center">
+                <div class="w-1/4">
+                    <a href="<?= home_url(); ?>" class="block py-2 <?= is_home() || is_front_page() ? 'is-active' : ''; ?>">
+                        <span class="text-2xl icomoon icon-home"></span>
+                        <div class="leading-none"><?= esc_html__('Home', 'wenprise-customizer'); ?></div>
+                    </a>
+                </div>
+                <div class="w-1/4">
+                    <a href="<?= get_permalink( wc_get_page_id( 'shop' ) ); ?>" class="block py-2 <?= is_shop() || is_product_category() ? 'is-active' : ''; ?>">
+                        <span class="text-2xl icomoon icon-grid"></span>
+                        <div class="leading-none"><?= esc_html__("Shop", "wenprise-customizer"); ?></div>
+                    </a>
+                </div>
+                <div class="w-1/4">
+                    <a href="<?= wc_get_cart_url(); ?>" class="js-cart-click block py-2 <?= is_cart() ? 'is-active' : ''; ?>">
+                        <span class="text-2xl icomoon icon-basket-loaded"></span>
+                        <div class="leading-none"><?= esc_html__("Cart", "wenprise-customizer"); ?></div>
+                    </a>
+                </div>
+                <div class="w-1/4">
+                    <a href="<?= wc_get_account_endpoint_url('dashboard') ?>" class="block py-2 <?= is_account_page() ? 'is-active' : ''; ?>">
+                        <span class="text-2xl icomoon icon-user"></span>
+                        <div class="leading-none"><?= esc_html__("Account", "wenprise-customizer"); ?></div>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    <?php }
 }

@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wenprise customizer\n"
 "Report-Msgid-Bugs-To: https://wedevs.com/contact/\n"
-"POT-Creation-Date: 2020-07-23 22:34+0800\n"
-"PO-Revision-Date: 2020-07-23 22:34+0800\n"
+"POT-Creation-Date: 2020-09-21 01:15+0800\n"
+"PO-Revision-Date: 2020-09-21 01:16+0800\n"
 "Last-Translator: Amos Lee <iwillhappy1314@gmail.com>\n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
 "Language: zh_CN\n"
@@ -19,131 +19,175 @@ msgstr ""
 "esc_html_x:1,2c\n"
 "X-Poedit-Basepath: ..\n"
 "X-Textdomain-Support: yes\n"
-"X-Generator: Poedit 2.3\n"
+"X-Generator: Poedit 2.4\n"
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: vendor\n"
 "X-Poedit-SearchPathExcluded-1: frontend\n"
 
-#: src/Base.php:248
+#: src/Base.php:256
 msgid "Layouts"
 msgstr "布局"
 
-#: src/Base.php:261
+#: src/Base.php:269
 msgid "Colors"
 msgstr "颜色"
 
-#: src/Base.php:262
+#: src/Base.php:270
 msgid "WooCommerce Color Schema"
 msgstr "WooCommerce 配色方案"
 
-#: src/Base.php:268
+#: src/Base.php:276
 msgid "Single Product"
 msgstr "产品详情"
 
-#: src/Base.php:269
+#: src/Base.php:277
 msgid "Single Product Page Settings"
 msgstr "产品详情页面设置"
 
-#: src/Base.php:275
+#: src/Base.php:283
 msgid "Container"
 msgstr "容器"
 
-#: src/Base.php:281
+#: src/Base.php:289
 msgid "Content/Sidebar"
 msgstr "内容/边栏"
 
-#: src/Base.php:282
+#: src/Base.php:290
 msgid "Content Sidebar Layout"
 msgstr "内容边栏布局"
 
-#: src/Base.php:332
+#: src/Base.php:340
 msgid "Primary color"
 msgstr "主要颜色"
 
-#: src/Base.php:342 src/Base.php:397 src/Base.php:501 src/Base.php:512
+#: src/Base.php:350 src/Base.php:418 src/Base.php:522 src/Base.php:533
 msgid "Sidebar Layout"
 msgstr "侧边栏布局"
 
-#: src/Base.php:350
+#: src/Base.php:358
 msgid "Elements order"
 msgstr "元素排序"
 
-#: src/Base.php:353
+#: src/Base.php:361
 msgid "Title"
 msgstr "标题"
 
-#: src/Base.php:354
+#: src/Base.php:362
 msgid "Price"
 msgstr "价格"
 
-#: src/Base.php:355
+#: src/Base.php:363
 msgid "Review"
 msgstr "评价"
 
-#: src/Base.php:356
+#: src/Base.php:364
 msgid "Product Category"
 msgstr "产品分类"
 
-#: src/Base.php:357
+#: src/Base.php:365
 msgid "Short Description"
 msgstr "简短描述"
 
-#: src/Base.php:370
+#: src/Base.php:378
 msgid "Columns of Gallery thumbnail"
 msgstr "相册缩略图每行显示的图片数量"
 
-#: src/Base.php:381
+#: src/Base.php:388
+msgid "Position of gallery thumbnail"
+msgstr "相册缩略图位置"
+
+#: src/Base.php:390
+msgid "Default(Bottom)"
+msgstr "默认（底部）"
+
+#: src/Base.php:391
+msgid "Left"
+msgstr "左边"
+
+#: src/Base.php:402
 msgid "Number of Related Products"
 msgstr "显示的相关产品数量"
 
-#: src/Base.php:391
+#: src/Base.php:412
 msgid "Number of Related Columns"
 msgstr "相关产品列数"
 
-#: src/Base.php:405
+#: src/Base.php:426
 msgid "Product Content width"
 msgstr "产品介绍内容宽度"
 
-#: src/Base.php:420
+#: src/Base.php:441
 msgid "Redirect to the cart page after successful addition"
 msgstr "添加成功后重定向到购物车页面"
 
-#: src/Base.php:430
+#: src/Base.php:451
 msgid "Enable AJAX add to cart buttons on archives"
 msgstr "在添加到购物车按钮上启用AJAX"
 
-#: src/Base.php:440
+#: src/Base.php:461
 msgid "Enable product reviews"
 msgstr "启用产品评价"
 
-#: src/Base.php:451
+#: src/Base.php:472
 msgid "Enable Related Products"
 msgstr "启用相关产品"
 
-#: src/Base.php:461
+#: src/Base.php:482
 msgid "Enable Upsell"
 msgstr "启用追加销售"
 
-#: src/Base.php:470
+#: src/Base.php:491
 msgid "Container width"
 msgstr "容器宽度"
 
-#: src/Base.php:482
+#: src/Base.php:503
 msgid "Content focus container width"
 msgstr "焦点内容容器宽度"
 
-#: src/Base.php:503
+#: src/Base.php:524
 msgid "No Sidebar"
 msgstr "无边栏"
 
-#: src/Base.php:504
+#: src/Base.php:525
 msgid "Left Sidebar"
 msgstr "左侧栏"
 
-#: src/Base.php:505
+#: src/Base.php:526
 msgid "Right Sidebar"
 msgstr "边栏在右侧"
 
-#: src/Base.php:523 src/Base.php:533
+#: src/Base.php:544 src/Base.php:554
 msgid "Content Width"
 msgstr "内容宽度"
+
+#: src/Base.php:565
+msgid "Show checkout progress"
+msgstr "显示结帐进度"
+
+#: src/Hooks.php:155
+msgid "Shopping Cart"
+msgstr "购物车"
+
+#: src/Hooks.php:160
+msgid "Shipping and Checkout"
+msgstr "运费和结算"
+
+#: src/Hooks.php:164
+msgid "Confirmation"
+msgstr "订单确认"
+
+#: src/Hooks.php:181
+msgid "Home"
+msgstr "首页"
+
+#: src/Hooks.php:187
+msgid "Shop"
+msgstr "商店"
+
+#: src/Hooks.php:193
+msgid "Cart"
+msgstr "购物车"
+
+#: src/Hooks.php:199
+msgid "Account"
+msgstr "我的"

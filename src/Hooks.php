@@ -177,26 +177,26 @@ class Hooks
             <div class="flex text-center">
                 <div class="w-1/4">
                     <a href="<?= home_url(); ?>" class="block py-2 <?= is_home() || is_front_page() ? 'is-active' : ''; ?>">
-                        <span class="text-2xl icomoon icon-home"></span>
-                        <div class="leading-none"><?= esc_html__('Home', 'wenprise-customizer'); ?></div>
+                        <span class="text-xl icomoon icon-home"></span>
+                        <div class="text-sm leading-none"><?= esc_html__('Home', 'wenprise-customizer'); ?></div>
                     </a>
                 </div>
                 <div class="w-1/4">
                     <a href="<?= get_permalink( wc_get_page_id( 'shop' ) ); ?>" class="block py-2 <?= is_shop() || is_product_category() ? 'is-active' : ''; ?>">
-                        <span class="text-2xl icomoon icon-grid"></span>
-                        <div class="leading-none"><?= esc_html__("Shop", "wenprise-customizer"); ?></div>
+                        <span class="text-xl icomoon icon-grid"></span>
+                        <div class="text-sm leading-none"><?= esc_html__("Shop", "wenprise-customizer"); ?></div>
                     </a>
                 </div>
                 <div class="w-1/4">
                     <a href="<?= wc_get_cart_url(); ?>" class="js-cart-click block py-2 <?= is_cart() ? 'is-active' : ''; ?>">
-                        <span class="text-2xl icomoon icon-basket-loaded"></span>
-                        <div class="leading-none"><?= esc_html__("Cart", "wenprise-customizer"); ?></div>
+                        <span class="text-xl icomoon icon-basket-loaded"></span>
+                        <div class="text-sm leading-none"><?= esc_html__("Cart", "wenprise-customizer"); ?></div>
                     </a>
                 </div>
                 <div class="w-1/4">
                     <a href="<?= wc_get_account_endpoint_url('dashboard') ?>" class="block py-2 <?= is_account_page() ? 'is-active' : ''; ?>">
-                        <span class="text-2xl icomoon icon-user"></span>
-                        <div class="leading-none"><?= esc_html__("Account", "wenprise-customizer"); ?></div>
+                        <span class="text-xl icomoon icon-user"></span>
+                        <div class="text-sm leading-none"><?= esc_html__("Account", "wenprise-customizer"); ?></div>
                     </a>
                 </div>
             </div>

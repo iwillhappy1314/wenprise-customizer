@@ -40,6 +40,10 @@ class Hooks
          */
         add_filter('woocommerce_output_related_products_args', [$this, 'woocommerce_related_products_args']);
 
+        add_filter('woocommerce_before_cart', [$this, 'checkout_progress']);
+        add_filter('woocommerce_before_checkout_form', [$this, 'checkout_progress']);
+        add_filter('woocommerce_before_thankyou', [$this, 'checkout_progress']);
+
         $this->render_product_loop_elements();
     }
 
@@ -58,7 +62,7 @@ class Hooks
     public function woocommerce_thumbnail_position($classes)
     {
 
-        if (!empty(get_theme_mod('rswc_single_product_gallery_thumbnails_position', ''))) {
+        if ( ! empty(get_theme_mod('rswc_single_product_gallery_thumbnails_position', ''))) {
             $classes[] = 'rs-product-gallery--vertical';
         }
 
@@ -120,6 +124,44 @@ class Hooks
                     break;
                 default:
             }
+        }
+    }
+
+
+    /**
+     * More product info
+     * Link to product
+     *
+     * @return void
+     * @since  1.0.0
+     */
+    public function checkout_progress()
+    {
+
+        $show_progress_bar = get_theme_mod('rs_show_checkout_progress', 1);
+
+        if ($show_progress_bar) {
+            ?>
+
+            <div class="rs-checkout-wrap">
+                <ul class="rs-checkout-bar">
+                    <li class="active first">
+                        <a href="<?php echo get_permalink(wc_get_page_id('cart')); ?>">
+                            <?php esc_html_e('Shopping Cart', '_s'); ?>
+                        </a>
+                    </li>
+                    <li class="<?= is_checkout() && ! is_order_received_page() ? 'next' : ''; ?><?= is_order_received_page() ? 'active' : ''; ?>">
+                        <a href="<?php echo get_permalink(wc_get_page_id('checkout')); ?>">
+                            <?php esc_html_e('Shipping and Checkout', '_s'); ?>
+                        </a>
+                    </li>
+                    <li class="<?= is_order_received_page() ? 'active last' : ''; ?>">
+                        <?php esc_html_e('Confirmation', '_s'); ?>
+                    </li>
+                </ul>
+            </div>
+
+            <?php
         }
     }
 }

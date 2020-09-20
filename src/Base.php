@@ -231,6 +231,10 @@ class Base
             'default' => '85',
         ]);
 
+        $this->wp_customize->add_setting('rs_show_checkout_progress', [
+            'default' => 1,
+        ]);
+
         // All the DynamicCSS settings.
         foreach ($this->dynamic_css as $setting_id => $args) {
             $this->wp_customize->add_setting(
@@ -383,8 +387,8 @@ class Base
                 'priority' => 12,
                 'label'    => esc_html__('Position of gallery thumbnail', 'wenprise-customizer'),
                 'choices'  => [
-                    ''  => esc_html__('Default(Bottom)', 'wenprise-customizer'),
-                    'left'  => esc_html__('Left', 'wenprise-customizer'),
+                    ''     => esc_html__('Default(Bottom)', 'wenprise-customizer'),
+                    'left' => esc_html__('Left', 'wenprise-customizer'),
                 ],
                 'section'  => 'rswc_single_product',
             ]
@@ -549,6 +553,17 @@ class Base
                 'priority' => 5,
                 'label'    => esc_html__('Content Width', 'wenprise-customizer'),
                 'section'  => 'rs_content_sidebar',
+            ]
+        );
+
+
+        $this->wp_customize->add_control(
+            'rs_show_checkout_progress',
+            [
+                'type'     => 'checkbox',
+                'priority' => 5,
+                'label'    => esc_html__('Show checkout progress', 'woocommerce'),
+                'section'  => 'woocommerce_checkout',
             ]
         );
 

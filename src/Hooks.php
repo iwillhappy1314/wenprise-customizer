@@ -33,6 +33,8 @@ class Hooks
          */
         add_filter('woocommerce_product_thumbnails_columns', [$this, 'woocommerce_thumbnail_columns']);
 
+        add_filter('woocommerce_single_product_image_gallery_classes', [$this, 'woocommerce_thumbnail_position']);
+
         /**
          * Modify related products args
          */
@@ -50,6 +52,17 @@ class Hooks
     public function woocommerce_thumbnail_columns()
     {
         return get_theme_mod('rswc_single_product_gallery_columns', 4);
+    }
+
+
+    public function woocommerce_thumbnail_position($classes)
+    {
+
+        if (!empty(get_theme_mod('rswc_single_product_gallery_thumbnails_position', ''))) {
+            $classes[] = 'rs-product-gallery--vertical';
+        }
+
+        return $classes;
     }
 
 

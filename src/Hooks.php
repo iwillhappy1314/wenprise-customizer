@@ -48,6 +48,7 @@ class Hooks
         add_filter('woocommerce_before_thankyou', [$this, 'checkout_progress']);
 
         add_action('wp_footer', [$this, 'mobile_footer_navbar']);
+        add_action('wp_footer', [$this, 'gallery_summary_sticky']);
 
         $this->render_product_loop_elements();
     }
@@ -182,7 +183,7 @@ class Hooks
                     </a>
                 </div>
                 <div class="w-1/4">
-                    <a href="<?= get_permalink( wc_get_page_id( 'shop' ) ); ?>" class="block py-2 <?= is_shop() || is_product_category() ? 'is-active' : ''; ?>">
+                    <a href="<?= get_permalink(wc_get_page_id('shop')); ?>" class="block py-2 <?= is_shop() || is_product_category() ? 'is-active' : ''; ?>">
                         <span class="text-xl icomoon icon-grid"></span>
                         <div class="text-sm leading-none"><?= esc_html__("Shop", "wenprise-customizer"); ?></div>
                     </a>
@@ -203,4 +204,20 @@ class Hooks
         </div>
 
     <?php }
+
+
+    public function gallery_summary_sticky()
+    {
+        $rswc_gallery_summary_sticky = get_theme_mod('rswc_gallery_summary_sticky', 0);
+
+        if ($rswc_gallery_summary_sticky) {
+            wp_enqueue_script('theia-sticky-sidebar');
+
+            wp_add_inline_script('theia-sticky-sidebar', "jQuery(document).ready(function($) {
+                    $('.woocommerce-product-gallery, .entry-summary').theiaStickySidebar({
+                        additionalMarginTop: 30,
+                    });
+                });");
+        }
+    }
 }

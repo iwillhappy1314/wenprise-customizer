@@ -384,7 +384,7 @@ class Base
             'rswc_single_product_gallery_thumbnails_position',
             [
                 'type'     => 'select',
-                'priority' => 12,
+                'priority' => 5,
                 'label'    => esc_html__('Position of gallery thumbnail', 'wenprise-customizer'),
                 'choices'  => [
                     ''     => esc_html__('Default(Bottom)', 'wenprise-customizer'),

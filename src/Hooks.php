@@ -70,7 +70,6 @@ class Hooks
          */
         add_action('woocommerce_after_add_to_cart_button', [$this, 'add_quick_buy_pid']);
         add_action('woocommerce_after_add_to_cart_button', [$this, 'add_quick_buy_button'], 99);
-        // add_action('woocommerce_add_to_cart_redirect', [$this, 'quick_buy_redirect'], 99);
 
         $this->render_product_loop_elements();
     }
@@ -394,26 +393,8 @@ class Hooks
         echo '<div id="rswc_quick_buy_container_' . esc_attr($pid) . '" class="rswc-quick-buy">';
 
         if ($quick_buy_btn_style == 'button') {
-            echo '<input  id="' . esc_attr($defined_id) . '"   class="button rswc_quick_buy_button ' . esc_attr($defined_class) . '" value="' . esc_attr($label) . '" type="button" ' . $defined_attrs . '>';
+            echo '<input  id="' . esc_attr($defined_id) . '"   class="rswc_quick_buy_button ' . esc_attr($defined_class) . '" value="' . esc_attr($label) . '" type="button" ' . $defined_attrs . '>';
         }
         echo '</div>';
-    }
-
-
-    /**
-     * Function to redirect user after qucik buy button is submitted
-     */
-    function quick_buy_redirect($url)
-    {
-        if (isset($_REQUEST[ 'rswc_quick_buy' ]) && $_REQUEST[ 'rswc_quick_buy' ] == true) {
-            $redirect = 'checkout';
-            if ($redirect == 'cart') {
-                return wc_get_cart_url();
-            } elseif ($redirect == 'checkout') {
-                return wc_get_checkout_url();
-            }
-        }
-
-        return $url;
     }
 }

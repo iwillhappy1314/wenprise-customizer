@@ -47,8 +47,22 @@ class Hooks
         add_filter('woocommerce_before_checkout_form', [$this, 'checkout_progress']);
         add_filter('woocommerce_before_thankyou', [$this, 'checkout_progress']);
 
+        /**
+         * Mobile footer navbar
+         */
         add_action('wp_footer', [$this, 'mobile_footer_navbar']);
+
+
+        /**
+         * Gallery/Summary sticky
+         */
         add_action('wp_footer', [$this, 'gallery_summary_sticky']);
+
+
+        /**
+         * Sticky add to cart bar
+         */
+        add_action('woocommerce_after_single_product', [$this, 'sticky_add_to_cart'], 30);
 
         $this->render_product_loop_elements();
     }
@@ -221,5 +235,99 @@ class Hooks
                     });
                 });");
         }
+    }
+
+
+    function sticky_add_to_cart()
+    {
+
+        if ( ! get_theme_mod('rswc_enable_sticky_add_to_cart_bar', 0)) {
+            return;
+        }
+
+        $_s_layout_woocommerce_single_product_ajax = true;
+
+        /**
+         * @var $product \WC_Product
+         */
+        global $product;
+
+        $id = $product->get_id();
+
+
+        $_s_sticky_add_to_cart_js = "
+                ( function ( $ ) {
+                    'use strict';
+                     var initialTopOffset = $('.rswc-product-hero').offset().top;
+                        $(window).scroll(function(event) {
+                          var scroll = $(window).scrollTop();
+    
+                          if (scroll + initialTopOffset >= $('.product_title').offset().top) {
+                            $('.js-sticky-add-to-cart').addClass('visible'); 
+                          } else {
+                            $('.js-sticky-add-to-cart').removeClass('visible');
+                          }
+                        });
+                    $(window).scroll(); 
+    
+                }( jQuery ) );
+		    ";
+
+        wp_add_inline_script('_s-main', $_s_sticky_add_to_cart_js);
+        ?>
+
+        <?php if ($product->is_in_stock()) { ?>
+
+        <section class="js-sticky-add-to-cart rs-sticky-add-to-cart">
+            <div class="container">
+                <div class="rs-sticky-add-to-cart__content">
+
+                    <?= wp_kses_post(woocommerce_get_product_thumbnail()); ?>
+
+                    <div class="rs-sticky-add-to-cart__content-product-info">
+                        <span class="rs-sticky-add-to-cart__content-title"><?php the_title(); ?>
+                            <?= wc_get_rating_html($product->get_average_rating()); ?>
+                        </span>
+                    </div>
+
+                    <div class="rs-sticky-add-to-cart__content-button">
+
+                        <span class="rs-sticky-add-to-cart__content-price">
+                            <?= $product->get_price_html(); ?>
+                        </span>
+
+                        <?php if ($product->is_type('variable') || $product->is_type('composite') || $product->is_type('bundle') || $product->is_type('grouped')) { ?>
+
+                            <a href="#sticky-scroll" class="variable-grouped-sticky button alt">
+                                <?= esc_attr__('Select options', '_s'); ?>
+                            </a>
+
+                        <?php } else { ?>
+
+                            <?php if (false === $_s_layout_woocommerce_single_product_ajax) { ?>
+
+                                <a href="<?= esc_url($product->add_to_cart_url()); ?>" class="ajax_add_to_cart single_add_to_cart_button button alt">
+                                    <?= esc_attr($product->single_add_to_cart_text()); ?>
+                                </a>
+
+                            <?php } else { ?>
+
+                                <a href="<?= esc_url($product->add_to_cart_url()); ?>" data-quantity="1"
+                                   data-product_id="<?= esc_html($id); ?>" data-product_sku="" class="ajax_add_to_cart button alt">
+                                    <?= esc_attr($product->single_add_to_cart_text()); ?>
+                                </a>
+
+                                <?php
+                            }
+                        }
+                        ?>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <?php
+    }
+
     }
 }

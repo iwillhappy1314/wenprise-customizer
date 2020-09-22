@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wenprise customizer\n"
 "Report-Msgid-Bugs-To: https://wedevs.com/contact/\n"
-"POT-Creation-Date: 2020-09-22 16:10+0800\n"
-"PO-Revision-Date: 2020-09-22 16:11+0800\n"
+"POT-Creation-Date: 2020-09-22 16:22+0800\n"
+"PO-Revision-Date: 2020-09-22 16:22+0800\n"
 "Last-Translator: Amos Lee <iwillhappy1314@gmail.com>\n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
 "Language: zh_CN\n"
@@ -168,22 +168,33 @@ msgstr "边栏在右侧"
 msgid "Content Width"
 msgstr "内容宽度"
 
-#: src/Hooks.php:199
-msgid "Select options"
-msgstr "选择项目"
+#: src/Hooks.php:152
+msgid "Shopping Cart"
+msgstr "购物车"
 
-#: src/Hooks.php:239
+#: src/Hooks.php:157
+msgid "Shipping and Checkout"
+msgstr "运费和结算"
+
+#: src/Hooks.php:161
+msgid "Confirmation"
+msgstr "订单确认"
+
+#: src/Hooks.php:181
 msgid "Home"
 msgstr "首页"
 
-#: src/Hooks.php:245
+#: src/Hooks.php:187
 msgid "Shop"
 msgstr "商店"
 
-#: src/Hooks.php:251
+#: src/Hooks.php:193
 msgid "Cart"
 msgstr "购物车"
 
-#: src/Hooks.php:257
+#: src/Hooks.php:199
 msgid "Account"
 msgstr "我的"
+
+#~ msgid "Select options"
+#~ msgstr "选择项目"

@@ -194,6 +194,10 @@ class Base
             'default' => '',
         ]);
 
+        $this->wp_customize->add_setting('rswc_enable_sticky_add_to_cart_bar', [
+            'default' => 0,
+        ]);
+
         $this->wp_customize->add_setting('rswc_single_product_content_width', [
             'default'   => '1216',
             'transport' => 'postMessage',
@@ -380,12 +384,22 @@ class Base
             'rswc_single_product_gallery_thumbnails_position',
             [
                 'type'     => 'select',
-                'priority' => 12,
+                'priority' => 5,
                 'label'    => esc_html__('Position of gallery thumbnail', 'wenprise-customizer'),
                 'choices'  => [
                     ''  => esc_html__('Default(Bottom)', 'wenprise-customizer'),
                     'left'  => esc_html__('Left', 'wenprise-customizer'),
                 ],
+                'section'  => 'rswc_single_product',
+            ]
+        );
+
+        $this->wp_customize->add_control(
+            'rswc_enable_sticky_add_to_cart_bar',
+            [
+                'type'     => 'checkbox',
+                'priority' => 5,
+                'label'    => esc_html__('Enable sticky add to cart bar', 'wenprise-customizer'),
                 'section'  => 'rswc_single_product',
             ]
         );
@@ -541,17 +555,6 @@ class Base
                 'section'  => 'rs_content_sidebar',
             ]
         );
-
-        $this->wp_customize->add_control(
-            'rs_global_content_width',
-            [
-                'type'     => 'slider',
-                'priority' => 5,
-                'label'    => esc_html__('Content Width', 'wenprise-customizer'),
-                'section'  => 'rs_content_sidebar',
-            ]
-        );
-
 
     }
 }

@@ -403,7 +403,7 @@ class Base
             [
                 'type'     => 'checkbox',
                 'priority' => 5,
-                'label'    => esc_html__('Sticky product gallery/summary', 'woocommerce'),
+                'label'    => esc_html__('Sticky product gallery/summary', 'wenprise-customizer'),
                 'section'  => 'rswc_single_product',
             ]
         );

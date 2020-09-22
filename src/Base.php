@@ -194,6 +194,10 @@ class Base
             'default' => '',
         ]);
 
+        $this->wp_customize->add_setting('rswc_gallery_summary_sticky', [
+            'default' => 0,
+        ]);
+
         $this->wp_customize->add_setting('rswc_enable_sticky_add_to_cart_bar', [
             'default' => 0,
         ]);
@@ -390,6 +394,16 @@ class Base
                     ''  => esc_html__('Default(Bottom)', 'wenprise-customizer'),
                     'left'  => esc_html__('Left', 'wenprise-customizer'),
                 ],
+                'section'  => 'rswc_single_product',
+            ]
+        );
+
+        $this->wp_customize->add_control(
+            'rswc_gallery_summary_sticky',
+            [
+                'type'     => 'checkbox',
+                'priority' => 5,
+                'label'    => esc_html__('Sticky product gallery/summary', 'woocommerce'),
                 'section'  => 'rswc_single_product',
             ]
         );

@@ -40,6 +40,10 @@ class Hooks
          */
         add_filter('woocommerce_output_related_products_args', [$this, 'woocommerce_related_products_args']);
 
+        add_action('wp_footer', [$this, 'mobile_footer_navbar']);
+
+        add_action('wp_footer', [$this, 'gallery_summary_sticky']);
+
         /**
          * Sticky add to cart bar
          */
@@ -222,5 +226,55 @@ class Hooks
         <?php
     }
 
+    }
+
+
+    public function mobile_footer_navbar()
+    { ?>
+        <div class="rs-mobile-nav fixed bottom-0 w-full bg-white z-50 show lg:hidden">
+            <div class="flex text-center">
+                <div class="w-1/4">
+                    <a href="<?= home_url(); ?>" class="block py-2 <?= is_home() || is_front_page() ? 'is-active' : ''; ?>">
+                        <span class="text-xl icomoon icon-home"></span>
+                        <div class="text-sm leading-none"><?= esc_html__('Home', 'wenprise-customizer'); ?></div>
+                    </a>
+                </div>
+                <div class="w-1/4">
+                    <a href="<?= get_permalink(wc_get_page_id('shop')); ?>" class="block py-2 <?= is_shop() || is_product_category() ? 'is-active' : ''; ?>">
+                        <span class="text-xl icomoon icon-grid"></span>
+                        <div class="text-sm leading-none"><?= esc_html__("Shop", "wenprise-customizer"); ?></div>
+                    </a>
+                </div>
+                <div class="w-1/4">
+                    <a href="<?= wc_get_cart_url(); ?>" class="js-cart-click block py-2 <?= is_cart() ? 'is-active' : ''; ?>">
+                        <span class="text-xl icomoon icon-basket-loaded"></span>
+                        <div class="text-sm leading-none"><?= esc_html__("Cart", "wenprise-customizer"); ?></div>
+                    </a>
+                </div>
+                <div class="w-1/4">
+                    <a href="<?= wc_get_account_endpoint_url('dashboard') ?>" class="block py-2 <?= is_account_page() ? 'is-active' : ''; ?>">
+                        <span class="text-xl icomoon icon-user"></span>
+                        <div class="text-sm leading-none"><?= esc_html__("Account", "wenprise-customizer"); ?></div>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    <?php }
+
+
+    public function gallery_summary_sticky()
+    {
+        $rswc_gallery_summary_sticky = get_theme_mod('rswc_gallery_summary_sticky', 0);
+
+        if ($rswc_gallery_summary_sticky) {
+            wp_enqueue_script('theia-sticky-sidebar');
+
+            wp_add_inline_script('theia-sticky-sidebar', "jQuery(document).ready(function($) {
+                    $('.woocommerce-product-gallery, .entry-summary').theiaStickySidebar({
+                        additionalMarginTop: 30,
+                    });
+                });");
+        }
     }
 }

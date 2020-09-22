@@ -202,6 +202,10 @@ class Base
             'default' => 0,
         ]);
 
+        $this->wp_customize->add_setting('rswc_single_product_quick_buy', [
+            'default' => 0,
+        ]);
+
         $this->wp_customize->add_setting('rswc_single_product_content_width', [
             'default'   => '1216',
             'transport' => 'postMessage',
@@ -414,6 +418,16 @@ class Base
                 'type'     => 'checkbox',
                 'priority' => 5,
                 'label'    => esc_html__('Enable sticky add to cart bar', 'wenprise-customizer'),
+                'section'  => 'rswc_single_product',
+            ]
+        );
+
+        $this->wp_customize->add_control(
+            'rswc_single_product_quick_buy',
+            [
+                'type'     => 'checkbox',
+                'priority' => 5,
+                'label'    => esc_html__('Show quick buy button', 'wenprise-customizer'),
                 'section'  => 'rswc_single_product',
             ]
         );

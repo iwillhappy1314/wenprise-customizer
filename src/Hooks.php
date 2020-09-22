@@ -64,6 +64,14 @@ class Hooks
          */
         add_action('woocommerce_after_single_product', [$this, 'sticky_add_to_cart'], 30);
 
+
+        /**
+         * Add quick buy button
+         */
+        add_action('woocommerce_after_add_to_cart_button', [$this, 'add_quick_buy_pid']);
+        add_action('woocommerce_after_add_to_cart_button', [$this, 'add_quick_buy_button'], 99);
+        // add_action('woocommerce_add_to_cart_redirect', [$this, 'quick_buy_redirect'], 99);
+
         $this->render_product_loop_elements();
     }
 
@@ -329,5 +337,83 @@ class Hooks
         <?php
     }
 
+    }
+
+
+    /**
+     * 添加快速购买表单项
+     */
+    function add_quick_buy_pid()
+    {
+
+        if ( ! get_theme_mod('rswc_single_product_quick_buy', 0)) {
+            return;
+        }
+
+        /**
+         * @var $product \WC_Product
+         */
+        global $product;
+
+        if ($product != null) {
+            echo '<input type="hidden" id="rswc_quick_buy_product_' . esc_attr($product->get_id()) . '" value="' . esc_attr($product->get_id()) . '"  />';
+        }
+    }
+
+
+    /**
+     * 添加快速购买按阿牛
+     */
+    function add_quick_buy_button()
+    {
+
+        if ( ! get_theme_mod('rswc_single_product_quick_buy', 0)) {
+            return;
+        }
+
+        /**
+         * @var $product \WC_Product
+         */
+        global $product;
+
+        if ($product == null) {
+            return;
+        }
+
+        if ($product->get_type() == 'external') {
+            return;
+        }
+        $pid                 = $product->get_id();
+        $type                = $product->get_type();
+        $label               = get_theme_mod('product-quick_buy-button-text', 'Buy Now');
+        $quick_buy_btn_style = 'button';
+        $class               = '';
+        $defined_class       = 'rswc_quick_buy_' . $type . ' rswc_quick_buy_' . $pid;
+        $defined_id          = 'rswc_quick_buy_button_' . $pid;
+        $defined_attrs       = 'name="rswc_quick_buy_button"  data-product-type="' . esc_attr($type) . '" data-product-id="' . esc_attr($pid) . '"';
+        echo '<div id="rswc_quick_buy_container_' . esc_attr($pid) . '" class="rswc-quick-buy">';
+
+        if ($quick_buy_btn_style == 'button') {
+            echo '<input  id="' . esc_attr($defined_id) . '"   class="button rswc_quick_buy_button ' . esc_attr($defined_class) . '" value="' . esc_attr($label) . '" type="button" ' . $defined_attrs . '>';
+        }
+        echo '</div>';
+    }
+
+
+    /**
+     * Function to redirect user after qucik buy button is submitted
+     */
+    function quick_buy_redirect($url)
+    {
+        if (isset($_REQUEST[ 'rswc_quick_buy' ]) && $_REQUEST[ 'rswc_quick_buy' ] == true) {
+            $redirect = 'checkout';
+            if ($redirect == 'cart') {
+                return wc_get_cart_url();
+            } elseif ($redirect == 'checkout') {
+                return wc_get_checkout_url();
+            }
+        }
+
+        return $url;
     }
 }

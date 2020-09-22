@@ -1,43 +1,56 @@
-jQuery(document).ready(function($) {
+(function($) {
 
-    window.onscroll = function() {navSticky();};
+    'use strict';
 
-    var header = document.getElementById('masthead');
-    var body = document.getElementsByTagName('body')[0];
-    var sticky = header.offsetTop + 100;
+    const body = $('body');
+    const rswc = {};
 
-    function navSticky() {
-        if (window.pageYOffset > sticky) {
-            header.classList.add('is-sticky');
-            body.classList.add('is-sticky');
-        } else {
-            header.classList.remove('is-sticky');
-            body.classList.remove('is-sticky');
-        }
-    }
+    rswc.init = function() {
+        this.ajax_add_to_cart();
+        this.sticky_cart();
+    };
 
-    var $loading = $('#ajax-loading').hide();
+    rswc.productQuickShop = function() {
+        /*
+         * Product Buy Now Button click
+         */
+        $('body').on('click', '.kapee_quick_buy_button', function() {
+            if (kapee_options.product_add_to_cart_ajax) {
+                $('.single_add_to_cart_button').addClass('quick-buy-proceed');
+            }
+            var $this = $(this);
+            var product_id = $(this).attr('data-product-id');
+            var product_type = $(this).attr('data-product-type');
+            var selected = $('form.cart input#kapee_quick_buy_product_' + product_id);
+            var productform = selected.parent();
 
-    $(document).ajaxStart(function() {
-        $loading.show();
-    }).ajaxStop(function() {
-        $loading.hide();
+            var submit_btn = productform.find('[type="submit"]');
+            var is_disabled = submit_btn.is(':disabled');
+
+            if (is_disabled) {
+                $('html, body').animate({
+                    scrollTop: submit_btn.offset().top - 200,
+                }, 900);
+            } else {
+                if (!$this.hasClass('disable')) {
+                    productform.append('<input type="hidden" value="true" name="kapee_quick_buy" />');
+                }
+                productform.find('.single_add_to_cart_button').trigger('click');
+            }
+        });
+
+        $('form.cart').change(function() {
+            var is_submit_disabled = $(this).find('[type="submit"]').is(':disabled');
+            if (is_submit_disabled) {
+                $('.kapee_quick_buy_button').attr('disabled', 'disable');
+            } else {
+                $('.kapee_quick_buy_button').removeAttr('disabled');
+            }
+        });
+    };
+
+    $(document).ready(function() {
+        rswc.init();
     });
 
-    // Close mobile menu - click the x icon.
-    $('.close-drawer').on('click', function() {
-        $('body').removeClass('mobile-toggled').removeClass('drawer-open');
-    });
-
-    //@see https://www.smartmenus.org/docs/
-    $('.sm, .product-categories').smartmenus({
-        showFunction: function($ul, complete) {
-            $ul.slideDown(100, complete);
-        },
-        hideFunction: function($ul, complete) {
-            $ul.slideUp(100, complete);
-        },
-        showTimeout : 0,
-        hideTimeout : 0,
-    });
-});
+})(jQuery);

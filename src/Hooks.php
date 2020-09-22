@@ -135,11 +135,7 @@ class Hooks
 
 
     /**
-     * More product info
-     * Link to product
-     *
-     * @return void
-     * @since  1.0.0
+     * Checkout progress bar
      */
     public function checkout_progress()
     {
@@ -172,6 +168,9 @@ class Hooks
     }
 
 
+    /**
+     * Mobile footer nav
+     */
     public function mobile_footer_navbar()
     { ?>
         <div class="rs-mobile-nav fixed bottom-0 w-full bg-white z-50 show lg:hidden">
@@ -206,6 +205,9 @@ class Hooks
     <?php }
 
 
+    /**
+     * Gallery/Summary sticky
+     */
     public function gallery_summary_sticky()
     {
         $rswc_gallery_summary_sticky = get_theme_mod('rswc_gallery_summary_sticky', 0);

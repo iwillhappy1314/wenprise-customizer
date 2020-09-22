@@ -116,7 +116,7 @@ class Frontend
 
         $css = '';
         $css .= sprintf(
-            '@media (min-width: 1280px) { .container { max-width: %dpx; } }',
+            '@media (min-width: 1280px) { .container, .site__content, .post-type-archive .site__shop, .tax-product_cat .site__shop, .tax-product_tag .site__shop, .single-product .archive-header .woocommerce-breadcrumb, .related.products, .upsells.products { max-width: %dpx; } }',
             $container_width
         );
 

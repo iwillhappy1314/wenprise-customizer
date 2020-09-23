@@ -27,6 +27,7 @@ if (function_exists('add_action')) {
     {
         new \Wenprise\Customizer\Frontend();
         new \Wenprise\Customizer\Hooks();
+        new \Wenprise\Customizer\Admin\BoughtTogether();
     });
 
 
@@ -44,7 +45,7 @@ if (function_exists('add_action')) {
                 margin: 6px;
             }
         </style>
-    <?php
+        <?php
     });
 
 }

@@ -71,6 +71,8 @@ class Hooks
         add_action('woocommerce_after_add_to_cart_button', [$this, 'add_quick_buy_pid']);
         add_action('woocommerce_after_add_to_cart_button', [$this, 'add_quick_buy_button'], 99);
 
+        add_action('woocommerce_single_product_summary', [$this, 'bought_together_products'], 52);
+
         $this->render_product_loop_elements();
     }
 
@@ -169,12 +171,12 @@ class Hooks
             <div class="rs-checkout-wrap">
                 <ul class="rs-checkout-bar">
                     <li class="active first">
-                        <a href="<?php echo get_permalink(wc_get_page_id('cart')); ?>">
+                        <a href="<?= get_permalink(wc_get_page_id('cart')); ?>">
                             <?php esc_html_e('Shopping Cart', 'wenprise-customizer'); ?>
                         </a>
                     </li>
                     <li class="<?= is_checkout() && ! is_order_received_page() ? 'next' : ''; ?><?= is_order_received_page() ? 'active' : ''; ?>">
-                        <a href="<?php echo get_permalink(wc_get_page_id('checkout')); ?>">
+                        <a href="<?= get_permalink(wc_get_page_id('checkout')); ?>">
                             <?php esc_html_e('Shipping and Checkout', 'wenprise-customizer'); ?>
                         </a>
                     </li>
@@ -396,5 +398,122 @@ class Hooks
             echo '<input  id="' . esc_attr($defined_id) . '"   class="rswc_quick_buy_button ' . esc_attr($defined_class) . '" value="' . esc_attr($label) . '" type="button" ' . $defined_attrs . '>';
         }
         echo '</div>';
+    }
+
+
+    public static function bought_together_products()
+    {
+        if (is_singular('product')) {
+            global $product;
+            $bought_together = true;
+            if ( ! $bought_together) {
+                return;
+            }
+            $prefix            = 'rswc_';
+            $product_id        = $product->get_id();
+            $together_products = get_post_meta($product_id, $prefix . 'product_ids', true);
+            if (empty($together_products)) {
+                return;
+            }
+            $together_products = array_merge([$product_id], $together_products);
+
+            $args = apply_filters('woocommerce_bought_together_products_args', [
+                'post_type'           => ['product', 'product_variation'],
+                'ignore_sticky_posts' => 1,
+                'no_found_rows'       => 1,
+                'posts_per_page'      => -1,
+                'orderby'             => 'post__in',
+                'post__in'            => $together_products,
+            ]);
+
+            $products             = new \WP_Query($args);
+            $total_price          = 0;
+            $count                = 0;
+            $i                    = 1;
+            $max_display_products = apply_filters('rswc_display_bought_together_products', 4);
+            $bought_together_txt  = esc_html__('Frequently Bought Together', 'wenprise-customizer');;
+
+            if ($products->have_posts()) : ?>
+                <div class="rswc-message"></div>
+                <div class="rswc-bt-products">
+                    <h3 class="rswc-bt-products__title">
+                        <?= apply_filters('woocommerce_bought_together_title', $bought_together_txt); ?>
+                    </h3>
+                    <div class="rswc-bt-products__content">
+                        <?php
+                        while ($products->have_posts()) : $products->the_post();
+                            global $product;
+
+                            $args[ 'count' ] = $count;
+                            wc_get_template('content-bought-together.php', $args);
+                            $price_html = $product->get_price_html();
+
+                            if ($price_html) {
+                                $display_price = wc_get_price_to_display($product);
+                            }
+
+                            if ($product->is_in_stock()) {
+                                $total_price += $product->get_price();
+                                $count++;
+                            }
+
+                            if ($i == $max_display_products) {
+                                break;
+                            }
+
+                            $i++;
+                        endwhile;
+                        wp_reset_postdata();
+
+                        global $product;
+                        ?>
+                    </div>
+
+                    <div class="items-total-price-button">
+                        <div class="items-total-price">
+                            <div class="current-item">
+                                <span class="item">
+                                    <?php
+                                    if ($product->is_in_stock()) {
+                                        echo sprintf(esc_html__('%d Item', 'wenprise-customizer'), 1);
+                                    } else {
+                                        echo sprintf(esc_html__('%d Item', 'wenprise-customizer'), 0);
+                                    }
+                                    ?>
+                                </span>
+                                <span class="item-price" data-id="<?= esc_attr($product->get_id()); ?>" data-item_price="<?= esc_attr($product->get_price()); ?>">
+                                    <?= wc_price($product->get_price()); ?>
+                                </span>
+                            </div>
+                            <div class="addons-item">
+                                    <span class="items">
+                                        <?= wp_kses(sprintf(__('<span class="addon-count">%d</span> Add-Ons', 'wenprise-customizer'), $count - 1), Helpers::allowed_html('span')); ?>
+                                    </span>
+                                <span class="items-price">
+                                        <?= wp_kses(wc_price($total_price - $product->get_price()), Helpers::allowed_html('span')); ?>
+                                    </span>
+                            </div>
+                            <div class="items-total">
+                                <span>
+                                    <?= esc_html__('Total', 'wenprise-customizer'); ?>
+                                </span>
+                                <span class="total-price">
+                                    <?= wp_kses(wc_price($total_price), Helpers::allowed_html('span')); ?>
+                                </span>
+                            </div>
+                        </div>
+                        <?php if ( ! get_theme_mod('catalog-mode', 0)) { ?>
+                            <div class="add-items-to-cart-wrap">
+                                <button type="button" class="button alt add-items-to-cart">
+                                    <?= esc_html__('Add items to cart', 'wenprise-customizer'); ?>
+                                </button>
+                            </div>
+                        <?php } ?>
+                    </div>
+
+                </div>
+            <?php endif;
+            wp_reset_postdata();
+        }
     }
 }

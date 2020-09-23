@@ -23,7 +23,7 @@ class BoughtTogether
     public function tab($tabs)
     {
         $tabs[ 'fbt_product' ] = [
-            'label'  => esc_html__('Frequently Bought Together', 'kapee'),
+            'label'  => esc_html__('Frequently Bought Together', 'wenprise-customizer'),
             'target' => 'bought_together_data',
             'class'  => ['show_if_simple', 'show_if_variable'],
         ];
@@ -41,8 +41,8 @@ class BoughtTogether
         <div id="bought_together_data" class="panel woocommerce_options_panel">
             <div class="options_group">
                 <p class="form-field">
-                    <label for="grouped_products"><strong><?php esc_html_e('Select Products', 'kapee'); ?></strong></label>
-                    <select class="wc-product-search short" multiple="multiple" style="width: 50%;" id="<?php echo esc_attr($this->prefix); ?>bundle_products" name="<?php echo esc_attr($this->prefix); ?>product_ids[]" data-sortable="true" data-placeholder="<?php esc_attr_e('Search for a product&hellip;', 'kapee'); ?>"
+                    <label for="grouped_products"><strong><?php esc_html_e('Select Products', 'wenprise-customizer'); ?></strong></label>
+                    <select class="wc-product-search short" multiple="multiple" style="width: 50%;" id="<?php echo esc_attr($this->prefix); ?>bundle_products" name="<?php echo esc_attr($this->prefix); ?>product_ids[]" data-sortable="true" data-placeholder="<?php esc_attr_e('Search for a product&hellip;', 'wenprise-customizer'); ?>"
                             data-action="woocommerce_json_search_products_and_variations" data-exclude="<?php echo intval($post->ID); ?>">
                         <?php
                         if ( ! empty($selected_products)) {
@@ -53,7 +53,7 @@ class BoughtTogether
                                 }
                             }
                         } ?>
-                    </select> <?php echo wc_help_tip(__('Choose products which you recommend to be bought along with this product.', 'kapee')); ?>
+                    </select> <?php echo wc_help_tip(__('Choose products which you recommend to be bought along with this product.', 'wenprise-customizer')); ?>
                 </p>
             </div>
         </div>

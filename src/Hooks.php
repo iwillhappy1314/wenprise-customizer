@@ -392,8 +392,15 @@ class Hooks
     }
 
 
-    public static function bought_together_products()
+    /**
+     * Display bought together functions
+     */
+    function bought_together_products()
     {
+        if ( ! get_theme_mod('rswc_enable_bought_together', 0)) {
+            return;
+        }
+
         if (is_singular('product')) {
             global $product;
             $bought_together = true;

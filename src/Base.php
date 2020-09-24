@@ -206,6 +206,10 @@ class Base
             'default' => 0,
         ]);
 
+        $this->wp_customize->add_setting('rswc_enable_bought_together', [
+            'default' => 0,
+        ]);
+
         $this->wp_customize->add_setting('rswc_single_product_content_width', [
             'default'   => '1216',
             'transport' => 'postMessage',
@@ -428,6 +432,16 @@ class Base
                 'type'     => 'checkbox',
                 'priority' => 5,
                 'label'    => esc_html__('Show quick buy button', 'wenprise-customizer'),
+                'section'  => 'rswc_single_product',
+            ]
+        );
+
+        $this->wp_customize->add_control(
+            'rswc_enable_bought_together',
+            [
+                'type'     => 'checkbox',
+                'priority' => 5,
+                'label'    => esc_html__('Enable Bought Together', 'wenprise-customizer'),
                 'section'  => 'rswc_single_product',
             ]
         );

@@ -27,7 +27,10 @@ if (function_exists('add_action')) {
     {
         new \Wenprise\Customizer\Frontend();
         new \Wenprise\Customizer\Hooks();
-        new \Wenprise\Customizer\Admin\BoughtTogether();
+
+        if (get_theme_mod('rswc_enable_bought_together', 0)) {
+            new \Wenprise\Customizer\Admin\BoughtTogether();
+        }
     });
 
 

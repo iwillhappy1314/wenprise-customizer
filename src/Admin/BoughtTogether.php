@@ -13,11 +13,9 @@ class BoughtTogether
             return;
         }
 
-        // Add Prodcut Frequently Buy Tab
         add_action('woocommerce_product_data_tabs', [$this, 'tab']);
         add_action('woocommerce_product_data_panels', [$this, 'panel']);
         add_action('woocommerce_process_product_meta', [$this, 'save']);
-
     }
 
     public function tab($tabs)
@@ -41,9 +39,18 @@ class BoughtTogether
         <div id="bought_together_data" class="panel woocommerce_options_panel">
             <div class="options_group">
                 <p class="form-field">
-                    <label for="grouped_products"><strong><?php esc_html_e('Select Products', 'wenprise-customizer'); ?></strong></label>
-                    <select class="wc-product-search short" multiple="multiple" style="width: 50%;" id="<?php echo esc_attr($this->prefix); ?>bundle_products" name="<?php echo esc_attr($this->prefix); ?>product_ids[]" data-sortable="true" data-placeholder="<?php esc_attr_e('Search for a product&hellip;', 'wenprise-customizer'); ?>"
-                            data-action="woocommerce_json_search_products_and_variations" data-exclude="<?php echo intval($post->ID); ?>">
+                    <label for="<?= esc_attr($this->prefix); ?>bundle_products">
+                        <strong><?php esc_html_e('Select Products', 'wenprise-customizer'); ?></strong>
+                    </label>
+                    <select class="wc-product-search short"
+                            multiple="multiple"
+                            style="width: 50%;"
+                            id="<?= esc_attr($this->prefix); ?>bundle_products"
+                            name="<?= esc_attr($this->prefix); ?>product_ids[]"
+                            data-sortable="true"
+                            data-placeholder="<?php esc_attr_e('Search for a product&hellip;', 'wenprise-customizer'); ?>"
+                            data-action="woocommerce_json_search_products_and_variations"
+                            data-exclude="<?= $post_id; ?>">
                         <?php
                         if ( ! empty($selected_products)) {
                             foreach ($selected_products as $product_id) {
@@ -53,7 +60,8 @@ class BoughtTogether
                                 }
                             }
                         } ?>
-                    </select> <?php echo wc_help_tip(__('Choose products which you recommend to be bought along with this product.', 'wenprise-customizer')); ?>
+                    </select>
+                    <?= wc_help_tip(__('Choose products which you recommend to be bought along with this product.', 'wenprise-customizer')); ?>
                 </p>
             </div>
         </div>

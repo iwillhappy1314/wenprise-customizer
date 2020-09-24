@@ -256,9 +256,6 @@ class Hooks
 
         $_s_layout_woocommerce_single_product_ajax = true;
 
-        /**
-         * @var $product \WC_Product
-         */
         global $product;
 
         $id = $product->get_id();
@@ -351,9 +348,6 @@ class Hooks
             return;
         }
 
-        /**
-         * @var $product \WC_Product
-         */
         global $product;
 
         if ($product != null) {
@@ -372,9 +366,6 @@ class Hooks
             return;
         }
 
-        /**
-         * @var $product \WC_Product
-         */
         global $product;
 
         if ($product == null) {
@@ -442,6 +433,7 @@ class Hooks
                     <div class="rswc-bt-products__content">
                         <?php
                         while ($products->have_posts()) : $products->the_post();
+
                             global $product;
 
                             $args[ 'count' ] = $count;
@@ -453,7 +445,7 @@ class Hooks
                             }
 
                             if ($product->is_in_stock()) {
-                                $total_price += $product->get_price();
+                                $total_price = $total_price + (float)$product->get_price();
                                 $count++;
                             }
 

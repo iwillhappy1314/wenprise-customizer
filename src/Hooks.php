@@ -259,27 +259,6 @@ class Hooks
         global $product;
 
         $id = $product->get_id();
-
-
-        $_s_sticky_add_to_cart_js = "
-                ( function ( $ ) {
-                    'use strict';
-                     var initialTopOffset = $('.rswc-product-hero').offset().top;
-                        $(window).scroll(function(event) {
-                          var scroll = $(window).scrollTop();
-    
-                          if (scroll + initialTopOffset >= $('.product_title').offset().top) {
-                            $('.js-sticky-add-to-cart').addClass('visible'); 
-                          } else {
-                            $('.js-sticky-add-to-cart').removeClass('visible');
-                          }
-                        });
-                    $(window).scroll(); 
-    
-                }( jQuery ) );
-		    ";
-
-        wp_add_inline_script('_s-main', $_s_sticky_add_to_cart_js);
         ?>
 
         <?php if ($product->is_in_stock()) { ?>

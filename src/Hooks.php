@@ -140,7 +140,14 @@ class Hooks
                     add_action('woocommerce_shop_loop_item_title', [$this, 'woocommerce_template_loop_categories'], $index);
                     break;
                 case 'title':
-                    add_action('woocommerce_shop_loop_item_title', 'woocommerce_template_loop_product_title', $index);
+                    add_action('woocommerce_shop_loop_item_title', function ()
+                    {
+                        echo '<h2 class="' . esc_attr(apply_filters('woocommerce_product_loop_title_classes', 'woocommerce-loop-product__title')) . '">';
+                        woocommerce_template_loop_product_link_open();
+                        echo get_the_title();
+                        woocommerce_template_loop_product_link_close();
+                        echo '</h2>';
+                    }, $index);
                     break;
                 case 'price':
                     add_action('woocommerce_shop_loop_item_title', 'woocommerce_template_loop_price', $index);

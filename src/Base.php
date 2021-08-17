@@ -225,6 +225,15 @@ class Base
             'default' => 1,
         ]);
 
+        // Add setting.
+        $this->wp_customize->add_setting( 'my_control', [
+            'type'              => 'theme_mod',
+            'capability'        => 'edit_theme_options',
+            'default'           => '<div style="padding:12px;background-color:#000;color>' . esc_html__( 'content', 'theme_textdomain' ) . '</div>',
+            'transport'         => 'refresh',
+            'sanitize_callback' => '__return_null',
+        ] );
+
         $this->wp_customize->add_setting('woocommerce_enable_reviews', [
             'type'    => 'option',
             'default' => 0,
@@ -353,6 +362,14 @@ class Base
                 'section'  => 'rswc_color_schema',
             ]
         );
+
+
+        // Add control.
+        $this->wp_customize->add_control( new \Kirki\Control\Custom( $this->wp_customize, 'my_control', [
+            'label'   => esc_html__( 'My Custom Control', 'theme_textdomain' ),
+            'section' => 'woocommerce_product_catalog',
+            'default'         => '<h3 style="padding:15px 10px; background:#fff; margin:0;">' . __( 'Headline', 'kirki' ) . '</h3>',
+        ] ) );
 
 
         /**

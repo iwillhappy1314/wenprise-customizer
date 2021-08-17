@@ -42,6 +42,7 @@ class ComposerStaticInit446964b50d09030a6f6b9203bd1a712f
             1 => __DIR__ . '/..' . '/kirki-framework/control-radio/src/Field',
             2 => __DIR__ . '/..' . '/kirki-framework/control-slider/src/Field',
             3 => __DIR__ . '/..' . '/kirki-framework/control-sortable/src/Field',
+            4 => __DIR__ . '/..' . '/kirki-framework/control-custom/src/Field',
         ),
         'Kirki\\Control\\' => 
         array (
@@ -50,6 +51,7 @@ class ComposerStaticInit446964b50d09030a6f6b9203bd1a712f
             2 => __DIR__ . '/..' . '/kirki-framework/control-radio/src/Control',
             3 => __DIR__ . '/..' . '/kirki-framework/control-slider/src/Control',
             4 => __DIR__ . '/..' . '/kirki-framework/control-sortable/src/Control',
+            5 => __DIR__ . '/..' . '/kirki-framework/control-custom/src/Control',
         ),
         'Kirki\\' => 
         array (
@@ -58,37 +60,8 @@ class ComposerStaticInit446964b50d09030a6f6b9203bd1a712f
     );
 
     public static $classMap = array (
-        'Kirki\\Control\\Base' => __DIR__ . '/..' . '/kirki-framework/control-base/src/Control/Base.php',
-        'Kirki\\Control\\Generic' => __DIR__ . '/..' . '/kirki-framework/control-generic/src/Control/Generic.php',
-        'Kirki\\Control\\Radio' => __DIR__ . '/..' . '/kirki-framework/control-radio/src/Control/Radio.php',
-        'Kirki\\Control\\Radio_Buttonset' => __DIR__ . '/..' . '/kirki-framework/control-radio/src/Control/Radio_Buttonset.php',
-        'Kirki\\Control\\Radio_Image' => __DIR__ . '/..' . '/kirki-framework/control-radio/src/Control/Radio_Image.php',
-        'Kirki\\Control\\Slider' => __DIR__ . '/..' . '/kirki-framework/control-slider/src/Control/Slider.php',
-        'Kirki\\Control\\Sortable' => __DIR__ . '/..' . '/kirki-framework/control-sortable/src/Control/Sortable.php',
-        'Kirki\\Field\\Generic' => __DIR__ . '/..' . '/kirki-framework/control-generic/src/Field/Generic.php',
-        'Kirki\\Field\\Number' => __DIR__ . '/..' . '/kirki-framework/control-generic/src/Field/Number.php',
-        'Kirki\\Field\\Radio' => __DIR__ . '/..' . '/kirki-framework/control-radio/src/Field/Radio.php',
-        'Kirki\\Field\\Radio_Buttonset' => __DIR__ . '/..' . '/kirki-framework/control-radio/src/Field/Radio_Buttonset.php',
-        'Kirki\\Field\\Radio_Image' => __DIR__ . '/..' . '/kirki-framework/control-radio/src/Field/Radio_Image.php',
-        'Kirki\\Field\\Slider' => __DIR__ . '/..' . '/kirki-framework/control-slider/src/Field/Slider.php',
-        'Kirki\\Field\\Sortable' => __DIR__ . '/..' . '/kirki-framework/control-sortable/src/Field/Sortable.php',
-        'Kirki\\Field\\Text' => __DIR__ . '/..' . '/kirki-framework/control-generic/src/Field/Text.php',
-        'Kirki\\Field\\Textarea' => __DIR__ . '/..' . '/kirki-framework/control-generic/src/Field/Textarea.php',
-        'Kirki\\Field\\URL' => __DIR__ . '/..' . '/kirki-framework/control-generic/src/Field/URL.php',
-        'Kirki\\URL' => __DIR__ . '/..' . '/kirki-framework/url-getter/src/URL.php',
+        'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
         'Mexitek\\PHPColors\\Color' => __DIR__ . '/..' . '/mexitek/phpcolors/src/Mexitek/PHPColors/Color.php',
-        'ProteusThemes\\CustomizerUtils\\CacheManager' => __DIR__ . '/..' . '/proteusthemes/wp-customizer-utilities/src/CacheManager.php',
-        'ProteusThemes\\CustomizerUtils\\Control\\Gradient' => __DIR__ . '/..' . '/proteusthemes/wp-customizer-utilities/src/Control/Gradient.php',
-        'ProteusThemes\\CustomizerUtils\\Control\\LayoutBuilder' => __DIR__ . '/..' . '/proteusthemes/wp-customizer-utilities/src/Control/LayoutBuilder.php',
-        'ProteusThemes\\CustomizerUtils\\Helpers' => __DIR__ . '/..' . '/proteusthemes/wp-customizer-utilities/src/Helpers.php',
-        'ProteusThemes\\CustomizerUtils\\Setting\\DynamicCSS' => __DIR__ . '/..' . '/proteusthemes/wp-customizer-utilities/src/Setting/DynamicCSS.php',
-        'ProteusThemes\\CustomizerUtils\\Setting\\DynamicCSS\\ModDarken' => __DIR__ . '/..' . '/proteusthemes/wp-customizer-utilities/src/Setting/DynamicCSS/ModDarken.php',
-        'ProteusThemes\\CustomizerUtils\\Setting\\DynamicCSS\\ModInterface' => __DIR__ . '/..' . '/proteusthemes/wp-customizer-utilities/src/Setting/DynamicCSS/ModInterface.php',
-        'ProteusThemes\\CustomizerUtils\\Setting\\DynamicCSS\\ModLighten' => __DIR__ . '/..' . '/proteusthemes/wp-customizer-utilities/src/Setting/DynamicCSS/ModLighten.php',
-        'ProteusThemes\\CustomizerUtils\\Setting\\DynamicCSS\\ModLinearGradient' => __DIR__ . '/..' . '/proteusthemes/wp-customizer-utilities/src/Setting/DynamicCSS/ModLinearGradient.php',
-        'ProteusThemes\\CustomizerUtils\\Setting\\DynamicCSS\\ModPrependAppend' => __DIR__ . '/..' . '/proteusthemes/wp-customizer-utilities/src/Setting/DynamicCSS/ModPrependAppend.php',
-        'Wenprise\\Customizer\\Base' => __DIR__ . '/../..' . '/src/Base.php',
-        'Wenprise\\Customizer\\Frontend' => __DIR__ . '/../..' . '/src/Frontend.php',
     );
 
     public static function getInitializer(ClassLoader $loader)

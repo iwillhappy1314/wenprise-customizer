@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "7c8ec9261e92fe42f716ae31e3b14d0d",
+    "content-hash": "7748768fcab3e05457e50af2e2ad4049",
     "packages": [
         {
             "name": "kirki-framework/control-base",
@@ -50,6 +50,57 @@
                 "wordpress"
             ],
             "time": "2019-10-04T21:15:35+00:00"
+        },
+        {
+            "name": "kirki-framework/control-custom",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/kirki-framework/control-custom.git",
+                "reference": "134a69a61fdbc95a7d6c081b324eba262db80729"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/kirki-framework/control-custom/zipball/134a69a61fdbc95a7d6c081b324eba262db80729",
+                "reference": "134a69a61fdbc95a7d6c081b324eba262db80729",
+                "shasum": ""
+            },
+            "require": {
+                "kirki-framework/control-base": "*",
+                "php": ">=5.6"
+            },
+            "default-branch": true,
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Kirki\\Control\\": "src/Control",
+                    "Kirki\\Field\\": "src/Field"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Ari Stathopoulos",
+                    "email": "aristath@gmail.com",
+                    "homepage": "http://aristath.github.io",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Custom control for the Kirki Customizer framework.",
+            "homepage": "https://aristath.github.io/kirki",
+            "keywords": [
+                "customizer",
+                "framework",
+                "wordpress"
+            ],
+            "support": {
+                "issues": "https://github.com/kirki-framework/control-custom/issues",
+                "source": "https://github.com/kirki-framework/control-custom/tree/master"
+            },
+            "time": "2019-07-06T20:23:00+00:00"
         },
         {
             "name": "kirki-framework/control-generic",
@@ -380,7 +431,8 @@
     "stability-flags": {
         "kirki-framework/control-radio": 20,
         "kirki-framework/control-slider": 20,
-        "kirki-framework/control-sortable": 20
+        "kirki-framework/control-sortable": 20,
+        "kirki-framework/control-custom": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,
@@ -388,5 +440,5 @@
         "ext-json": "*"
     },
     "platform-dev": [],
-    "plugin-api-version": "1.1.0"
+    "plugin-api-version": "2.0.0"
 }

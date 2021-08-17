@@ -19,6 +19,7 @@ if (function_exists('add_action')) {
         $wp_customize->register_control_type(Radio_Image::class);
         $wp_customize->register_control_type(Slider::class);
         $wp_customize->register_control_type(Sortable::class);
+        $wp_customize->register_control_type(\Kirki\Control\Custom::class);
 
         new \Wenprise\Customizer\Base($wp_customize);
     });

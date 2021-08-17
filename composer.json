@@ -6,7 +6,8 @@
     "proteusthemes/wp-customizer-utilities": "^2.7",
     "kirki-framework/control-radio": "dev-master",
     "kirki-framework/control-slider": "dev-master",
-    "kirki-framework/control-sortable": "dev-master"
+    "kirki-framework/control-sortable": "dev-master",
+    "kirki-framework/control-custom": "dev-master"
   },
   "autoload": {
     "psr-4": {

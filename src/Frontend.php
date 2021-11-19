@@ -114,8 +114,7 @@ class Frontend
         $container_focus_width = absint(get_theme_mod('rs_container_focus_width', 1216));
         $product_content_width = absint(get_theme_mod('rswc_single_product_content_width', 1216));
 
-        $css = '';
-        $css .= sprintf(
+        $css = sprintf(
             '@media (min-width: 1280px) { .container, .site__content, .post-type-archive .site__shop, .tax-product_cat .site__shop, .tax-product_tag .site__shop, .single-product .archive-header .woocommerce-breadcrumb, .related.products, .upsells.products { max-width: %dpx; } }',
             $container_width
         );

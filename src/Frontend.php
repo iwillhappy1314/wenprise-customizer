@@ -55,12 +55,14 @@ class Frontend
 
         $layout = get_theme_mod('rs_global_layout', 'sidebar-none');
 
-        if (is_shop() || is_product_category() || is_product_tag()) {
-            $layout = get_theme_mod('rswc_products_catalog_sidebar_layout', 'sidebar-none');
-        }
+        if (function_exists('is_shop')) {
+            if (is_shop() || is_product_category() || is_product_tag()) {
+                $layout = get_theme_mod('rswc_products_catalog_sidebar_layout', 'sidebar-none');
+            }
 
-        if (is_product()) {
-            $layout = get_theme_mod('rswc_single_product_sidebar_layout', 'sidebar-none');
+            if (is_product()) {
+                $layout = get_theme_mod('rswc_single_product_sidebar_layout', 'sidebar-none');
+            }
         }
 
         $classes[] = $layout;

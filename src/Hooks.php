@@ -202,7 +202,12 @@ class Hooks
      * Mobile footer nav
      */
     public function mobile_footer_navbar()
-    { ?>
+    {
+        if(!function_exists('is_shop')){
+            return;
+        }
+
+        ?>
         <div class="rs-mobile-nav fixed bottom-0 w-full bg-white z-50 show lg:hidden">
             <div class="flex text-center">
                 <div class="w-1/4">
@@ -240,6 +245,10 @@ class Hooks
      */
     public function gallery_summary_sticky()
     {
+        if(!function_exists('is_shop')){
+            return;
+        }
+
         $rswc_gallery_summary_sticky = get_theme_mod('rswc_gallery_summary_sticky', 0);
 
         if ($rswc_gallery_summary_sticky) {

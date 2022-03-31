@@ -59,6 +59,8 @@ class Hooks
         add_action('wp_footer', [$this, 'gallery_summary_sticky']);
 
 
+        add_filter('body_class', [$this, 'add_body_classes']);
+
         /**
          * Sticky add to cart bar
          */
@@ -199,11 +201,22 @@ class Hooks
 
 
     /**
+     * @param $classes
+     *
+     * @return array
+     */
+    function add_body_classes($classes)
+    {
+        return array_merge($classes, ['show-mobile-nav']);
+    }
+
+
+    /**
      * Mobile footer nav
      */
     public function mobile_footer_navbar()
     {
-        if(!function_exists('is_shop')){
+        if ( ! function_exists('is_shop')) {
             return;
         }
 
@@ -245,7 +258,7 @@ class Hooks
      */
     public function gallery_summary_sticky()
     {
-        if(!function_exists('is_shop')){
+        if ( ! function_exists('is_shop')) {
             return;
         }
 

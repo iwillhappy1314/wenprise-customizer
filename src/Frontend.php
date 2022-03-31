@@ -65,6 +65,12 @@ class Frontend
             }
         }
 
+        if(get_theme_mod('rswc_enable_sticky_add_to_cart_bar', 0)){
+            $classes[] = 'show-sticky-cart-bar';
+        }
+
+        $classes[] = 'show-mobile-nav';
+
         $classes[] = $layout;
 
         return $classes;

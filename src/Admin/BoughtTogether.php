@@ -70,7 +70,7 @@ class BoughtTogether
 
     public function save($product_id)
     {
-        $data = isset($_POST[ $this->prefix . 'product_ids' ]) ? $_POST[ $this->prefix . 'product_ids' ] : [];
+        $data = $_POST[ $this->prefix . 'product_ids' ] ?? [];
         update_post_meta($product_id, $this->prefix . 'product_ids', $data);
     }
 

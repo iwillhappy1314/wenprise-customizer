@@ -59,8 +59,6 @@ class Hooks
         add_action('wp_footer', [$this, 'gallery_summary_sticky']);
 
 
-        add_filter('body_class', [$this, 'add_body_classes']);
-
         /**
          * Sticky add to cart bar
          */
@@ -197,17 +195,6 @@ class Hooks
 
             <?php
         }
-    }
-
-
-    /**
-     * @param $classes
-     *
-     * @return array
-     */
-    function add_body_classes($classes)
-    {
-        return array_merge($classes, ['show-mobile-nav']);
     }
 
 

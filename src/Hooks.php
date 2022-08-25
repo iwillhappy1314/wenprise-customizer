@@ -300,7 +300,7 @@ class Hooks
                         <?php if ($product->is_type('variable') || $product->is_type('composite') || $product->is_type('bundle') || $product->is_type('grouped')) { ?>
 
                             <a href="#sticky-scroll" class="variable-grouped-sticky button alt">
-                                <?= esc_attr__('Select options', '_s'); ?>
+                                <?= esc_attr__('Select options', 'wenprise-content-components'); ?>
                             </a>
 
                         <?php } else { ?>

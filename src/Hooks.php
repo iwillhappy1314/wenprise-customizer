@@ -43,9 +43,9 @@ class Hooks
         /**
          * Add checkout progress
          */
-        add_filter('woocommerce_before_cart', [$this, 'checkout_progress']);
-        add_filter('woocommerce_before_checkout_form', [$this, 'checkout_progress']);
-        add_filter('woocommerce_before_thankyou', [$this, 'checkout_progress']);
+        add_filter('woocommerce_before_cart', [$this, 'checkout_progress'], 1);
+        add_filter('woocommerce_before_checkout_form', [$this, 'checkout_progress'], 1);
+        add_filter('woocommerce_before_thankyou', [$this, 'checkout_progress'], 1);
 
         /**
          * Mobile footer navbar
